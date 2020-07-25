@@ -1,0 +1,58 @@
+
+---
+title: Template for .Rmd
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    toc:  TRUE
+    toc_depth:  1
+fontsize: 12pt
+geometry: margin=0.5in,top=0.25in
+#  md_document:
+#  html_document:
+#    toc: true
+#  	toc_float: true
+#    css: styles.css
+---
+
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TRUE)
+```
+
+```{r library, include=FALSE		}
+library(jimTools)
+library(here)
+library(fs)
+```
+
+
+```{r render, eval=FALSE	}
+here()
+file <- "001_compress_files.Rmd"
+file  <- basename(file)
+dir="rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+```{r compress}
+# all files in rmd/
+tar(tarfile = here("compressed/compressed_file.tar.gz"),
+		files = here("rmd"),
+		compression = c("gzip"))
+
+```
+
+```{r knit_exit()}
+knitr::knit_exit()
+```
+
+***
+
+
+
+
+
+
