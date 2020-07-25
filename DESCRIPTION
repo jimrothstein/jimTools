@@ -16,5 +16,4 @@ Suggests:
 RoxygenNote: 7.1.1
 Imports: 
     purrr,
-    rmarkdown,
-    fs
+    rmarkdown
