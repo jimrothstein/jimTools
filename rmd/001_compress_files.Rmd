@@ -14,17 +14,14 @@ geometry: margin=0.5in,top=0.25in
 #    css: styles.css
 ---
 
-
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TRUE)
 ```
-
 ```{r library, include=FALSE		}
 library(here)
 library(fs)
 load_all()
 ```
-
 
 ```{r render, eval=FALSE	}
 here()
@@ -36,15 +33,25 @@ jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
 ```
 
-```{r compress}
-# all files in rmd/
-tar(tarfile = 
-		here("compressed/compressed_file.tar.gz"),
-		files = here("rmd"),
-		compression = c("gzip")
-)
 
+```{r g}
+g  <- function(dir) {
+out  <- paste0( lubridate::now(), 
+								"_archive_",
+								"compressed_files.tar.gz"
+		)
+
+	tar( tarfile =
+			here("compressed", out),
+			files=here(dir),  
+			compression = c("gzip"))
+}
+
+g("rmd")
+g("R")
 ```
+
+
 
 ```{r knit_exit()}
 knitr::knit_exit()
