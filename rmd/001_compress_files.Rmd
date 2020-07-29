@@ -1,4 +1,3 @@
-
 ---
 title: Template for .Rmd
 output: 
@@ -21,9 +20,9 @@ knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TR
 ```
 
 ```{r library, include=FALSE		}
-library(jimTools)
 library(here)
 library(fs)
+load_all()
 ```
 
 
@@ -39,9 +38,11 @@ jimTools::ren_github(file, dir)
 
 ```{r compress}
 # all files in rmd/
-tar(tarfile = here("compressed/compressed_file.tar.gz"),
+tar(tarfile = 
+		here("compressed/compressed_file.tar.gz"),
 		files = here("rmd"),
-		compression = c("gzip"))
+		compression = c("gzip")
+)
 
 ```
 
