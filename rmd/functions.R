@@ -1,4 +1,8 @@
 
+#' Functions related to ENV
+#'
+
+
 ## WHERE(name, env=caller_env()
 ## USAGE:  where("mean")
 ## Find env which has 'name"

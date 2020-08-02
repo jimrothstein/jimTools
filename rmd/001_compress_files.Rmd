@@ -33,23 +33,20 @@ jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
 ```
 
-
+jr_compress_dir()
 ```{r g}
-g  <- function(dir) {
-out  <- paste0( lubridate::now(), 
-								"_archive_",
-								"compressed_files.tar.gz"
-		)
+dir <- NULL
 
-	tar( tarfile =
-			here("compressed", out),
-			files=here(dir),  
-			compression = c("gzip"))
-}
-
-g("rmd")
-g("R")
+jr_compress_dir("rmd")
+jr_compress_dir("R")
 ```
+
+```{r}
+# To inspect tar.gz
+# tar doesn't like files in quotes
+tar --list -f <file>
+```
+
 
 
 
