@@ -29,28 +29,9 @@ dir="rmd"
 jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
 ```
-fix_dates_times
-```{r aside}
-
-x  <- lubridate::now()
-x
-# extract, then rebuild
-lubridate::month(x)
-day(x)
-week(x)
-hour(x)
-minute(x)
-second(x)
-
-# formatting, lubridate  stringr
-prefix  <- paste(year(x),month(x, label=TRUE, abbr=TRUE ),
-			stringr::str_pad(day(x), width=2, side=c("left"), pad="0"),
-		hour(x),minute(x), sep="_")
-
-```
 
 jr_compress_dir()
-```{r g}
+```{r begin}
 dir <- NULL
 
 jr_compress_dir("rmd")

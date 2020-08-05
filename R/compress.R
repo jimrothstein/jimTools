@@ -16,6 +16,7 @@ jr_compress_dir  <- function(dir) {
 													width=2, side=c("left"), pad="0"),
 					lubridate::hour(x),
 					lubridate::minute(x), 
+					lubridate::second(x),
 					sep="_")
 
 	out  <- paste0(prefix , 
