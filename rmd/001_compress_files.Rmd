@@ -32,6 +32,19 @@ dir="rmd"
 jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
 ```
+fix_dates_times
+```{r aside}
+library(lubridate)
+x  <- lubridate::now()
+x
+# extract, then rebuild
+month(x)
+day(x)
+week(x)
+hour(x)
+minute(x)
+second(x)
+```
 
 jr_compress_dir()
 ```{r g}
