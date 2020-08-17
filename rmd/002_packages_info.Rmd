@@ -1,0 +1,60 @@
+---
+title: Template for .Rmd
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    toc:  TRUE
+    toc_depth:  1
+fontsize: 12pt
+geometry: margin=0.5in,top=0.25in
+#  md_document:
+#  html_document:
+#    toc: true
+#  	toc_float: true
+#    css: styles.css
+---
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TRUE)
+```
+```{r library, include=FALSE		}
+load_all()
+```
+
+```{r render, eval=FALSE	}
+file <- "001_compress_files.Rmd"
+file  <- basename(file)
+dir="rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+dependencies?
+```{r begin}
+# given package, return its dependencies (vector)
+tools::package_dependencies( package="ggplot2", reverse=FALSE	)
+
+
+# given package, what OTHER packages depend upon it? (> 2000 !)
+tools::package_dependencies( package="ggplot2", reverse=TRUE	)
+
+```
+
+```{r}
+```
+
+
+
+
+```{r knit_exit()}
+knitr::knit_exit()
+```
+
+***
+
+
+
+
+
+
