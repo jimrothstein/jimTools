@@ -15,33 +15,51 @@ geometry: margin=0.5in,top=0.25in
 ---
 
 ```{r setup, include=FALSE		}
-knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TRUE)
+knitr::opts_chunk$set(
+											echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE)
 ```
 ```{r library, include=FALSE		}
 load_all()
 ```
 
-```{r render, eval=FALSE	}
-file <- "001_compress_files.Rmd"
-file  <- basename(file)
-dir="rmd"
-
-jimTools::ren_pdf(file,dir)
-jimTools::ren_github(file, dir)
-```
 
 dependencies?
 ```{r begin}
-# given package, return its dependencies (vector)
-tools::package_dependencies( package="ggplot2", reverse=FALSE	)
+package="ggplot2"
+# What does package need?
+jimTools::jr_package_dependencies(package=package)
 
 
-# given package, what OTHER packages depend upon it? (> 2000 !)
-tools::package_dependencies( package="ggplot2", reverse=TRUE	)
+# What other pkg need this one?
+t  <-  jimTools::jr_package_dependencies_reverse(package=package)
+t  <- tibble::as_tibble(t)
+t %>% head()
+
+
+# fields refers to fields in DESCRIPTION of packag
+# TODO, replace lib.loc with my lib
+tools::dependsOnPkgs(package,
+               dependencies = c("Depends", "Imports", "LinkingTo"),
+               recursive = TRUE, 
+							 lib.loc = NULL,
+               installed =
+               utils::installed.packages(lib.loc=NULL, 
+																				 fields = "Enhances"))
+
+# try this in dt?
+library(datatable)
 
 ```
 
-```{r}
+```{r learn_about_options}
+# list of lists
+length(options()) #84
+
+t  <- tibble::tibble(name=names(options()))
+print(t, n=100)
 ```
 
 
@@ -58,3 +76,11 @@ knitr::knit_exit()
 
 
 
+```{r render, eval=FALSE	}
+file <- "001_compress_files.Rmd"
+file  <- basename(file)
+dir="rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
