@@ -11,6 +11,22 @@ jr_install.packages  <- function(pkg_names=NULL) {
 									 keep_outputs=TRUE)
 }
 
+#' jr_update_packages
+#'
+#' 
+#' @export
+#'
+jr_update_packages  <- function() {
+	update.packages(
+	# ask before install
+	# if built with older R version, mark as old.
+					ask = TRUE,
+			checkBuilt = TRUE)	
+}
+
+
+
+
 
 #' jr_package_dependencies  
 #'
