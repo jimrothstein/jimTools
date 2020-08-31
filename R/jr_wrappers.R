@@ -26,8 +26,6 @@ jr_update_packages  <- function() {
 
 
 
-
-
 #' jr_package_dependencies  
 #'
 #' @param package package or packages needs what? 
@@ -49,3 +47,21 @@ jr_package_dependencies_reverse  <- function(package = NULL) {
                    installed =
                    utils::installed.packages(lib.loc, fields = "Enhances"))
 }
+
+#' jr_set_env 
+#'
+#' HELPER
+#' @param key key is name of env variable
+#' @param value value of env variable
+#' @export
+jr_set_env  <- function(key = NULL, value=NULL) {
+	Sys.setenv(key = value) 
+}
+
+#' jr_get_env 
+#'
+#' HELPER
+#' @param key key is name of env variable
+#' @export
+jr_get_env  <- function(key) {
+	Sys.getenv(key)}

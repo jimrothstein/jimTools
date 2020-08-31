@@ -1,13 +1,13 @@
 Package: jimTools
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9901
+Title: Misc Tools I Find Useful 
+Version: 0.0.0.9002
 Authors@R: 
-    person(given = "First",
+    person(given = "jim",
            family = "Last",
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Misc tools I find useful.
 License: What license it uses
 Encoding: UTF-8
 LazyData: true

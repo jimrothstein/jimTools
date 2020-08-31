@@ -13,10 +13,6 @@ geometry: margin=0.5in,top=0.25in
 ---
 
 
-Purpose??
-
-
-
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  
 											comment="      ##",  
@@ -27,12 +23,20 @@ knitr::opts_chunk$set(echo = TRUE,
 <!--  RENDER:  see bottom -->
 
 ```{r library, include=FALSE		}
+library(jimTools)
 ``` 
 
 
+BEGIN HERE (tibble, format etc)
 ```{r begin}
 # all
 options()
+```
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+```{r getOption	}
 getOption("width")
 
 # set
@@ -42,7 +46,12 @@ options("jim_param"= 25)
 getOption("jim_param")
 ```
 
+
+NOT WORKING
 ```{r environ}
+jr_set_env(key = "name", value="jim")
+jr_get_env("name")
+
 Sys.setenv("name" = "jim")
 Sys.getenv("name")
 ```
@@ -50,16 +59,22 @@ Sys.getenv("name")
 
 ***
 
-```{r knit_exit()} 
+```{r knit_exit2()} 
 knitr::knit_exit() 
 ```
 
 /newpage
 
 ```{r render, eval=FALSE	} 
-file <- "" 
+file <- "/home/jim/code/jimTools/rmd/004_set_options.Rmd"
+
 file  <- basename(file) 
 dir <-"rmd"
+
+rmarkdown::render("~/code/jimTools/rmd/004_set_options.Rmd",
+									output_format="pdf_document",
+									output_dir="~/Downloads/print_and_delete/",
+									output_file="out.pdf")
 
 jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
