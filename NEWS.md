@@ -26,6 +26,8 @@ https://www.markdownguide.org/basic-syntax/
 ### v 0.0.0.9002
 
 *	document more functions.
-*	add functions to set/get ENV variables.
-*	display all options in .Rmd file.
+*	add function, get_env() to get ENV variables.
+* add function to get_options().
+* wip:  remove Rmd 
+* wip:  test_that()
 

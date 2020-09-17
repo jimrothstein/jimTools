@@ -179,11 +179,17 @@ f  <- function() {
 }
 f()# 
 
-
+#' format_single_string flattens a named list
+#'
+#' @param l list
+#' @export
 
 # GIVEN named list of strings, flatten list into single string
+# a:value <TAB>
 format_single_string  <- function(l) {
-	purrr::map2_chr(names(l), l, ~ paste0(.x ,": ",pluck(.y), "\t\t")  )
+	purrr::map2_chr(names(l), l, ~ paste0(.x ,": ",purrr::pluck(.y), "\t\t")  )
 }
 
+l  <- list(a="apple", b="banana", c="carrot")
+format_single_string(l)
 

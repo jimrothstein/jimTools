@@ -64,4 +64,11 @@ jr_set_env  <- function(key = NULL, value=NULL) {
 #' @param key key is name of env variable
 #' @export
 jr_get_env  <- function(key) {
+	# stop if any evaluate to FALSE		
+	stopifnot(
+						!rlang::is_empty(key), # catches NULL
+						!rlang::is_na(key),  # catch NA
+						rlang::is_character(key)
+	)
+
 	Sys.getenv(key)}

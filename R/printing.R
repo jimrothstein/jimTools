@@ -10,6 +10,7 @@
 ren_pdf  <- function(file, dir) {
 rmarkdown::render(
 									here( dir, file), 
+									output_format="pdf_document",
 									output_dir="~/Downloads/print_and_delete") 
 }
 

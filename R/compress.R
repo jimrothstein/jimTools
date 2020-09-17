@@ -24,9 +24,8 @@ jr_compress_dir  <- function(dir) {
 									"compressed_files.tar.gz"
 			)
 
-	tar( tarfile =
-			here("compressed", out),
-			files=here(dir),  
-			compression = c("gzip"))
+	tar( 	tarfile = here("compressed", out),
+				files=here(dir),  
+				compression = c("gzip"))
 }
 

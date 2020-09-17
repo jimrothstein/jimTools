@@ -12,7 +12,6 @@ fontsize: 12pt
 geometry: margin=0.5in,top=0.25in 
 ---
 
-
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  
 											comment="      ##",  
@@ -26,12 +25,133 @@ knitr::opts_chunk$set(echo = TRUE,
 library(jimTools)
 ``` 
 
-
 BEGIN HERE (tibble, format etc)
 ```{r begin}
 # all
 options()
 ```
+
+```{r options_tibble}
+library(tibble)
+library(tidyr)
+library(purrr)
+library(dplyr)
+
+# 84 x 1  each element is named list
+t <- tibble(options = options())
+t
+t$options["width"]
+
+names(t$options[1])
+names(t$options[2])
+names(t$options[5])
+
+# list of lists (mostly, not all, are vectors)
+t$options
+
+option_names  <- tibble(option_name = names(t$options))
+option_names
+
+pluck(t, 1, 1, 1)
+pluck(t, 1, 2, 1)
+pluck(t, 1, 5)
+
+
+t$options[[10]]
+t$options[[1]]
+
+
+#### TODO
+tidyr::unnest_wider(t$options)
+
+```
+```{r names}
+
+#### another way
+l  <- options()
+names(l) #85
+
+# random names, value
+names(l[51])
+l[51]
+
+
+names(l[53])
+l[67]
+
+#### find element of vector
+l["warning.length"]
+l["pdfviewer"]	  # /usr/bin/xdg-open
+l["keep.source"]  # TRUE
+l["browser"]	 # croutonurlhandler
+```
+
+
+
+```{r versions}
+
+#### 8- versions
+packageVersion("rmarkdown") # 1.10
+R.version.string     # 3.5.1
+getwd()                 # ~/code/r_
+list.files()            # list filesin wd
+```
+
+```{r dependencies}
+# downstream
+# For given <pkg>, what installed packages need it?	
+pkg  <- "jimTools"
+pkg  <- "tibble"
+l <- tools::package_dependencies(
+							pkg,
+							db=installed.packages(),
+							reverse=TRUE	)
+l
+# upstream
+# For given <pkg>, what does pkgs MUST be installed? 
+pkg  <- "jimTools"
+pkg  <- "tibble"
+l <- tools::package_dependencies(pkg, reverse=FALSE		)
+l
+
+#### dep is just content , a chr[]
+	t  <- tibble(pkg = names(l), dep= purrr::pluck(l ))
+	t
+
+
+
+
+##	remove a pacakge
+	##	not run
+#remove.packages("cellranger")
+
+
+######  011_update all packages - 
+# available.packages()  	# A LOT!
+
+# uncomment (takes time)
+# update.packages(ask = FALSE, repos = 'https://cran.r-project.org')
+
+
+###### 012_update knitr
+install.packages('knitr', repos = c('https://xran.yihui.name', 'https://cran.r-project.org'))
+
+
+##### 013_jennyBC
+####  from https://github.com/smithjd/explore-libraries/blob/master/01_explore-libraries_jenny.R
+ipt <- installed.packages() %>%
+  as_tibble()
+
+ipt %>% glimpse()
+nrow(ipt)
+dim(ipt)
+
+####' 014_Exploring the packages
+
+####   * tabulate by LibPath, Priority, or both
+#### base: 14, recommended:15, my library:165
+ipt %>%
+  count(LibPath, Priority)
 
 ```{r knit_exit()} 
 knitr::knit_exit() 
