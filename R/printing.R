@@ -31,5 +31,7 @@ ren_github  <- function(file, dir) {
 rmarkdown::render(
 									here(dir, file),
 									output_format="github_document",
-									output_dir="~/Downloads/print_and_delete") 
+                  output_dir=="./md",
+									#output_dir="~/Downloads/print_and_delete"
+                 ) 
 }
