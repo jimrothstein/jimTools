@@ -20,6 +20,7 @@
 # ignore these directories
 # ==========================
 compressed/
+vignettes/
 
 # ignore these separate projects
 # ================================
@@ -52,3 +53,4 @@ vim-myhelp/
 
 tags
 
+inst/doc

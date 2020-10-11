@@ -1,0 +1,78 @@
+	 vim:linebreak:nowrap:nospell tw=78 fo=tqlnr foldcolumn=3 
+	 
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+---
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+```
+
+<!--  RENDER:  see bottom -->
+
+```{r library, include=FALSE		}
+library(jimTools)
+``` 
+
+BEGIN - from R-pkgs v2; Chaptr 11
+
+All give crouton errors?
+```{r begin}
+browseVignettes("tibble")
+browseVignettes(package = "tibble")
+browseVignettes()
+```
+Work
+```{r these_work}
+
+# all
+vignette()
+vignette(package="broom")
+
+```
+Do once, sets up structure.
+```{r creat_vignette, eval=FALSE  }
+usethis::use_vignette("jim_first_vignette")
+```
+
+optional step, build() will creat vignette
+```{r build_vignette}
+# a bit slow, crashes on callr::r(...), HTTP 401, bad credentials??
+devtools::build_vignettes()
+```
+
+
+***
+
+```{r knit_exit2()} 
+knitr::knit_exit() 
+```
+
+\newpage
+
+
+```{r render, eval=FALSE	} 
+file <- "/home/jim/code/jimTools/rmd/005_prep_for_vignette.Rmd"
+
+file  <- basename(file) 
+dir <-"rmd"
+
+rmarkdown::render(file,
+									output_format="pdf_document",
+									output_dir="~/Downloads/print_and_delete/",
+									output_file="out.pdf")
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
