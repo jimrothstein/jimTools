@@ -23,6 +23,14 @@ https://www.markdownguide.org/basic-syntax/
 
 ##  NEWS.md
 
+
+### v 0.0.0.9003
+
+* Add testthat.
+* Add roxygen2 tags.
+* Fix ren_github() to use here()
+* wip - vignettes.
+
 ### v 0.0.0.9002
 
 *	document more functions.

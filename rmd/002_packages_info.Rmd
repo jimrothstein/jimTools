@@ -73,15 +73,10 @@ knitr::knit_exit()
 ***
 
 
-
-
-
-
 ```{r render, eval=FALSE	}
 file <- "001_compress_files.Rmd"
 file  <- basename(file)
 dir="rmd"
-
 jimTools::ren_pdf(file,dir)
-jimTools::ren_github(file, dir)
+jimTools::ren_github(x=here(dir,file))
 ```
