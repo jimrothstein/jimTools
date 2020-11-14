@@ -1,0 +1,62 @@
+	 vim:linebreak:nowrap:nospell tw=78 fo=tqlnr foldcolumn=3 
+	 
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+---
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+```
+
+<!--  RENDER:  see bottom -->
+
+```{r library, include=FALSE		}
+library(jimTools)
+``` 
+
+
+```{r begin}
+##  see code in *.R
+
+# jim_str  <- function(X=NULL, max.level =1 , vec.len =1 ){
+#     if (is.null(X) ) print("help:   X, max.level, vec.len")
+#     cat("For help, jim_str() \n")
+#     str(X, max.level, vec.len)
+#    }
+jimTools::jim_str()
+jim_str(1:10)
+jim_str(1:10, 1, 3)
+
+```
+```{r knit_exit2()} 
+knitr::knit_exit() 
+```
+
+\newpage
+
+
+```{r render, eval=FALSE	} 
+file <- "/home/jim/code/jimTools/rmd/005_prep_for_vignette.Rmd"
+
+file  <- basename(file) 
+dir <-"rmd"
+
+rmarkdown::render(file,
+									output_format="pdf_document",
+									output_dir="~/Downloads/print_and_delete/",
+									output_file="out.pdf")
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
