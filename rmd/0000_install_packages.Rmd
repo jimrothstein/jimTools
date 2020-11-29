@@ -1,8 +1,6 @@
-
 	 vim:linebreak:nowrap:nospell tw=78 fo=tqlnr foldcolumn=3 
 	 
 --- 
-# Spaces, no Tabs
 title: Template for .Rmd 
 output: 
   pdf_document: 
@@ -11,7 +9,6 @@ toc: TRUE
 toc_depth:  1 
 fontsize: 12pt 
 geometry: margin=0.5in,top=0.25in 
-
 ---
 /home/jim/.config/nvim/templates/skeleton.Rmd
 othercomments
