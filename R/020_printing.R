@@ -14,7 +14,25 @@ rmarkdown::render(
 									output_dir="~/Downloads/print_and_delete") 
 }
 
+#' ren_html (file,dir)
+#' render rmd to html 
+#'
+#' @param file file must be sent in the form here(dir, file) 
+#' @param output_format default "html_document" also "pdf_document"
+#' @param outdir_dir default: "~/Downloads/print_and_delete"
+#'
+#' 
+#' 
+#' @return 
+#' @export
+ren_file <- function(file, 
+                      output_format="html_document",
+                      output_dir="~/Downloads/print_and_delete") {
 
+  rmarkdown::render(file,
+                    output_format="html_document",
+                    output_dir="~/Downloads/print_and_delete")
+}
 
 
 #' ====================================
