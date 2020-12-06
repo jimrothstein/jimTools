@@ -37,8 +37,28 @@ dir <- NULL
 
 
 # dir = directory (under project root) 
-jr_compress_dir("rmd")
-jr_compress_dir("R")
+jr_compress_dir(type = "project", dir = "rmd")
+jr_compress_dir(type = "project", dir = "R")
+```
+
+TODO
+* develop code HERE
+* when good, put into compress.R
+
+```{r system_files}
+
+# full list
+the_dirs = list()
+
+```
+
+```{r tessting}
+# pluck 1 dir at a time from the_dirs
+dir =
+
+compress_dir(type="system", 
+             dir = "~/Downloads/mp3")
+
 ```
 
 ```{r}

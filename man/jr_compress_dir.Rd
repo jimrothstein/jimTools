@@ -2,12 +2,10 @@
 % Please edit documentation in R/compress.R
 \name{jr_compress_dir}
 \alias{jr_compress_dir}
-\title{compress a dir}
+\title{REMVEVE}
 \usage{
-jr_compress_dir(dir)
+jr_compress_dir(type = c("project", "system"), dir = NULL, the_dirs = NULL)
 }
 \description{
-@param dir directory (under projet root) to compress
- @return 
- @export
+REMVEVE
 }
