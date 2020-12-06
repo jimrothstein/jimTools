@@ -7,7 +7,7 @@
 #'  
 jr_compress_dir  <- function(dir) {
 	x  <- lubridate::now()
-
+  cat("Processing.... ",dir, "/n")
 	# format, lubridate  stringr
 	prefix  <- paste(
 				 	lubridate::year(x),

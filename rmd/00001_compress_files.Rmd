@@ -15,9 +15,10 @@ geometry: margin=0.5in,top=0.25in
 ---
 
 ```{r setup, include=FALSE		}
-knitr::opts_chunk$set(echo = TRUE,  comment="      ##",  error=TRUE, collapse=TRUE)
-```
-```{r library, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+                      comment="      ##",  
+                      error=TRUE, 
+                      collapse=TRUE)
 load_all()
 ```
 
@@ -34,6 +35,8 @@ jr_compress_dir()
 ```{r begin}
 dir <- NULL
 
+
+# dir = directory (under project root) 
 jr_compress_dir("rmd")
 jr_compress_dir("R")
 ```
