@@ -1,0 +1,117 @@
+	 vim:linebreak:nowrap:nospell:cul tw=78 fo=tqlnr foldcolumn=3 
+
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+date: "`r paste('last updated', 
+    format(lubridate::now(), '%H:%M, %d %B %Y'))`"
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+---
+
+ADD CODE from mp3 pkg to Renumber
+
+## base:: files and dir commands
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+library(jimTools) 
+```
+
+## base:: commands (why use fs:: ?)
+```{r begin}
+# pattern is regex
+list.files("./rmd", pattern="*.Rmd")
+list.files("./rmd", full.names = TRUE ,pattern="*.Rmd")
+list.files("./rmd", pattern="^[0-9]*")
+
+if (FALSE)
+  # file.rename()
+  # file.create()
+  # basename()
+  # dirname()
+  #
+  # list.dirs()
+  # dir()
+```
+
+
+## base::find.package()
+```{r find.package}
+find.package("jimTools")
+find.package("purrr")
+
+
+path.package("jimTools")
+```
+
+### prepend "0" to file names (put into jimTools)
+```{r prepend_file_name}
+prepend  <- "0"
+old  <- list.files("./rmd", pattern="*.Rmd")
+old
+new  <- paste0(prepend, old)
+new
+file.rename(here("rmd", old), here("rmd", new))
+```
+
+## sprintf has some nice features!
+```{r sprint}
+sprintf("hello %s", "jim")
+
+sprintf("hello %s", 23)
+
+sprintf("hello %04s", 23)         # min of 4
+sprintf("hello %04f", 23)         # 23.000000
+
+sprintf("hello %04i", 23)         # int, min of 4 digits
+
+```
+
+regex, sub(), gsub will work
+stringr is easier?
+```{r}
+the_dir  <- "./rmd"
+the_files  <- list.files(the_dir)
+the_files
+library(stringr)
+# regex
+the_prefixes  <- stringr::str_extract(the_files, "^[0-9]*[A-Z]?_" )
+the_prefixes
+
+```
+
+ToDO  -- ADD CODE FROM mp3 pkg
+Propose new numbering prefix for all files
+```{r examle}
+```
+
+
+***
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+
+/newpage
+
+```{r render, eval=FALSE	} 
+file <- "0086_base_file_commands.Rmd" 
+
+file  <- basename(file) 
+dir <-"rmd"
+
+rmarkdown::render(file, output_format="html_document",
+                  output_dir="~/Downloads/print_and_delete")
+
+jimTools::ren_file(here(dir,file), output_format="html_document")
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```

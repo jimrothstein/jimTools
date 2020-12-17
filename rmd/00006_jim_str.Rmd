@@ -17,14 +17,8 @@ knitr::opts_chunk$set(echo = TRUE,
 											comment="      ##",  
 											error=TRUE, 
 											collapse=TRUE) 
-```
-
-<!--  RENDER:  see bottom -->
-
-```{r library, include=FALSE		}
 library(jimTools)
-``` 
-
+```
 
 ```{r begin}
 ##  see code in *.R
