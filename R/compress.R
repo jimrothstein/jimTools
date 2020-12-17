@@ -4,7 +4,7 @@
 #'    if type is system, zipped file will be placed in toGoogle dir
 #'    if type is project, zipped file will be placed in compressed folder in
 #'    this package.
-#'  @param type project, if dir is inside project; 
+#'  @param type project, if dir is inside project; (ie relative dir)
 #'              system, if the_dirs is list of complete diretory paths
 #'  @param dir directory 
 #'  @return 
@@ -30,6 +30,7 @@ compress_dir  <- function(type = c("project", "system"),
                   basename(dir),
 									".tar.gz"
 			)
+  # work done here
   if (type == "project")
 	  tar( 	tarfile = here("compressed", out_file),
 				files=here(dir),  

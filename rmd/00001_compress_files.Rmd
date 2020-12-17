@@ -13,6 +13,7 @@ geometry: margin=0.5in,top=0.25in
 #  	toc_float: true
 #    css: styles.css
 ---
+Compress and Archive Files on Laptop
 
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  
@@ -45,19 +46,31 @@ TODO
 * develop code HERE
 * when good, put into compress.R
 
-```{r system_files}
+  - dotfiles, Except .Renviron are in git
+  - 
 
+  - Problems:  exclude/include certain files ?
+```{r system_files}
 # full list
-the_dirs = list()
+
+the_dirs = list(
+                bin = "~/bin/*.sh",
+                mp3 = "~/Downloads/mp3", # scripts onl
+                #dotfiles = "~/dotfiles/.Renviron",
+                documents = "~/Downloads/documents" # multiple dirs
+
+
+)
 
 ```
 
 ```{r tessting}
 # pluck 1 dir at a time from the_dirs
-dir =
+dir = the_dirs[[1]]
+dir
 
 compress_dir(type="system", 
-             dir = "~/Downloads/mp3")
+             dir = dir )
 
 ```
 
