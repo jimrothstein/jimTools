@@ -32,9 +32,32 @@ jimTools::ren_pdf(file,dir)
 jimTools::ren_github(file, dir)
 ```
 
+
+## Which dir to backup?
+```{r dir}
+dir  <- "~/Downloads/documents"
+dir
+
+```
+
+
+## Prepare prefix for compressed file
+```{r prefix}
+prefix  <- get_prefix()
+prefix
+```
+
+## Prepare full-name of compressed file
+```{r file_name}
+out_file  <- get_compressed_file_name(prefix, dir)
+out_file
+```
+
+
 jr_compress_dir()
 ```{r begin}
-dir <- NULL
+
+compress_dir(prefix, out_file, type="system", dir)
 
 
 # dir = directory (under project root) 
@@ -42,6 +65,21 @@ jr_compress_dir(type = "project", dir = "rmd")
 jr_compress_dir(type = "project", dir = "R")
 ```
 
+### tar
+*  add include/exclude files dir?
+*  tar -tf <archive>   to list files
+
+```{r tar}
+
+    output_dir  <-  "~/Downloads/toGoogle"
+    output_dir  <- here("rmd") 
+    dir  <- here("rmd")  #  to backup
+    out_file  <- "test_compress.tar.gz"
+    tar( tarfile = paste0(output_dir, "/", out_file),
+        files = dir,
+        compression = c("gzip")
+        )
+```
 TODO
 * develop code HERE
 * when good, put into compress.R
@@ -66,7 +104,7 @@ the_dirs = list(
 
 ```{r tessting}
 # pluck 1 dir at a time from the_dirs
-dir = the_dirs[[1]]
+dir = the_dirs[[3]]
 dir
 
 compress_dir(type="system", 

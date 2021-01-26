@@ -1,0 +1,31 @@
+#################
+#
+#	MAKE
+#	files and directories to EXCLUDE
+#
+#################
+
+calibre*
+
+airbnb_amy
+
+15dr14800_dir
+
+Takeout_from_Google_1st_try
+
+Takeout_from_Google_2nd_attempt
+
+*.tar
+*.git
+################
+#
+#	SYNTAX:
+#
+#	dir1
+#	dir1 is directory,  not dir1/ , not dir1/* etc.
+#
+################
+
+
+# exclude_files.txt
+# tar -cvf mytar.tar -X exclude_files.txt *
