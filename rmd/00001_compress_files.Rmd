@@ -65,6 +65,7 @@ jr_compress_dir(type = "project", dir = "rmd")
 jr_compress_dir(type = "project", dir = "R")
 ```
 
+### FAILS ...
 ### tar
 *  add include/exclude files dir?
 *  tar -tf <archive>   to list files
@@ -73,11 +74,12 @@ jr_compress_dir(type = "project", dir = "R")
 
     output_dir  <-  "~/Downloads/toGoogle"
     output_dir  <- here("rmd") 
-    dir  <- here("rmd")  #  to backup
+    dir  <- here("~/Downloads/documents")  #  to backup
     out_file  <- "test_compress.tar.gz"
     tar( tarfile = paste0(output_dir, "/", out_file),
         files = dir,
-        compression = c("gzip")
+        compression = c("gzip"),
+        extra_flags = "-X  rmd/exclude_files.txt"
         )
 ```
 TODO

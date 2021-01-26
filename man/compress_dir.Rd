@@ -2,18 +2,26 @@
 % Please edit documentation in R/compress.R
 \name{compress_dir}
 \alias{compress_dir}
-\title{compress a dir}
+\title{@title compress a dir}
 \usage{
-compress_dir(type = c("project", "system"), dir = NULL)
+compress_dir(
+  prefix = NULL,
+  out_file = NULL,
+  type = c("project", "system"),
+  dir = NULL
+)
 }
 \description{
 @description compress_dir()  creates .tar.gz file
    if type is system, zipped file will be placed in toGoogle dir
    if type is project, zipped file will be placed in compressed folder in
    this package.
- @param type project, if dir is inside project; 
+ @param type project, if dir is inside R project; (ie relative dir), OR
              system, if the_dirs is list of complete diretory paths
  @param dir directory 
+ @param prefix of file name
+ @param out_file  prefix plus this will be name of  compressed file.
+ @keywords backup compress
  @return 
  @export
 }

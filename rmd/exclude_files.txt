@@ -3,29 +3,34 @@
 #	MAKE
 #	files and directories to EXCLUDE
 #
+# USAGE (to create):  
+#   tar -czf <name_to_use> -X exclude_files.txt *
+
+# USAGE (to list): 
+#  tar -tf  <name_to_use>
 #################
 
-calibre*
-
-airbnb_amy
-
-15dr14800_dir
-
-Takeout_from_Google_1st_try
-
-Takeout_from_Google_2nd_attempt
-
-*.tar
-*.git
 ################
-#
-#	SYNTAX:
+#	SYNTAX for exclude_files.txt
 #
 #	dir1
 #	dir1 is directory,  not dir1/ , not dir1/* etc.
 #
 ################
 
+# directories
+calibre*
+airbnb_amy
+15dr14800_dir
+Takeout_from_Google_1st_try
+Takeout_from_Google_2nd_attempt
 
-# exclude_files.txt
-# tar -cvf mytar.tar -X exclude_files.txt *
+
+# files
+*.tar
+*.git
+exclude_files.txt
+
+
+
+
