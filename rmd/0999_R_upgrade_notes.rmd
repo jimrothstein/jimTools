@@ -1,0 +1,91 @@
+---
+title: "`r knitr::current_input()`"
+date: "`r paste('last updated', 
+    format(lubridate::now(), ' %d %B %Y'))`"
+output:   
+  html_document:  
+        code_folding: show
+        toc: true 
+        toc_depth: 2
+        toc_float: true
+  pdf_document:   
+    latex_engine: xelatex  
+    toc: true
+    toc_depth:  2   
+fontsize: 11pt   
+geometry: margin=0.5in,top=0.25in   
+---
+
+## Upgrade R from 4.0.3 to 4.0.4
+*  on Rpi 400
+*  from source, *.tar.gz
+*  follow directions (R install & admin guide)
+*  tar -rf | .configure etc
+*  last step    sudo make install, seemd to put it together (so running R
+  opens 4.0.4
+*  Directories !   Still confused.   No need to sweat.
+*  3 directories most important,  ~/R/armv71.....-library/4.0/  (pkgs I add)
+    /usr/local/lib/R/   where R prefers R_HOME be (leave it alone!)
+
+*  run try_things_here/0088_base package commands. (shows which dir/which
+  pkgs)
+
+## Where am I?
+```{r}
+
+x  <- packageStatus()
+print(x)
+```
+
+
+
+
+
+<!-- 
+set cul   "cursorline
+cc=+1			"colorcolumn is 1 more than tw
+
+vim: to format all urls for md
+s/https.*/[&]()/g
+-->
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+library(jimTools) 
+```
+
+TODO   put this into R
+prepend "0" to file names (put into jimTools)
+```{r prepend_file_name}
+# base tools only
+prepend  <- "0"
+the_dir  <- "rmd"
+old  <- list.files(the_dir, pattern = "*.Rmd")
+old
+new  <- paste0(prepend, old)
+new
+if (FALSE )
+file.rename(here(the_dir, old), 
+            here(the_dir, new))
+
+```
+***
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+
+/newpage
+
+```{r render, eval=FALSE	} 
+file <- "rmd/0008_file_numbers.Rmd" 
+file  <- basename(file) 
+dir <-"rmd"
+
+jimTools::ren_file(here(dir,file))
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
