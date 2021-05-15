@@ -14,6 +14,7 @@ output:
     toc_depth:  2   
 fontsize: 11pt   
 geometry: margin=0.5in,top=0.25in   
+TAGS:  update,RPI,cleanup!,
 ---
 
 ## Upgrade R from 4.0.3 to 4.0.4
@@ -36,18 +37,6 @@ geometry: margin=0.5in,top=0.25in
 x  <- packageStatus()
 print(x)
 ```
-
-
-
-
-
-<!-- 
-set cul   "cursorline
-cc=+1			"colorcolumn is 1 more than tw
-
-vim: to format all urls for md
-s/https.*/[&]()/g
--->
 
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  
