@@ -18,6 +18,7 @@ geometry: margin=0.5in,top=0.25in
 TAGS:  update,packages
 ---
 
+## OBSOLETE  ... see ~/code/jimTools/Rscripts
 
 ## To update R packages,  use code in this file.
 
