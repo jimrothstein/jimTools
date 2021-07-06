@@ -24,52 +24,6 @@ knitr::opts_chunk$set(echo = TRUE,
 library(jimTools) 
 ```
 
-### create fake files?   See  jimTools
-
-```{r get_fake}
-fake_files  <- jimTools::create_fake_files()
-fake_files
-
-fake_dir  <- dirname(fake_files[1])
-fake_dir  
-
-lapply(fake_files, jimTools::write_fake_file)
-
-list.files(fake_dir)
-
-# check
-xfun::read_utf8(fake_files[1])
-
-remove(fake_dir)
-
-```
-
-```{r functions}
-
-
-```
-
-```{r do_it, eval=F}
-
-
-# caution:
-
-## check that path is correct and has `/` as suffix
-path
-
-
-
-OLD  <- paste0(path, OLD)
-OLD
-
-NEW  <- paste0(path, NEW)
-
-## Unlike list.files(), file.rename() does not provide for `path`
-## Note they are not even in same family.
-
-
-
-```
 
 #### patterns
 ```{r patterns}
