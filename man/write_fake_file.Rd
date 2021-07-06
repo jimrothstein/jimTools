@@ -6,6 +6,9 @@
 \usage{
 write_fake_file(f)
 }
+\arguments{
+\item{f}{the fake file that wil be written to disk.}
+}
 \description{
-write fake files to disk
+Adds minimal content stub to fake file and writes to disk.
 }

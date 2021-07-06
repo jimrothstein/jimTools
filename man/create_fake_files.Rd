@@ -2,12 +2,13 @@
 % Please edit documentation in R/fake_files.R
 \name{create_fake_files}
 \alias{create_fake_files}
-\title{create_fake_files
+\title{@title create_fake_files
  
- @description  create fake dir and fake file names.}
+ @description  create fake dir,  numbered fake file names.}
 \usage{
 create_fake_files()
 }
 \description{
-@export
+@return character vector of file names.
+ @export
 }

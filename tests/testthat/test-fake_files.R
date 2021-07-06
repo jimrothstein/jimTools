@@ -3,24 +3,30 @@
 
 #### Create fake temp files and then remote
 ```{r fake}
+load_all()
 fake_files  <- create_fake_files()
 fake_files
 
 
 lapply(fake_files, write_fake_file)
 
-
+# check
+xfun::read_utf8(fake_files[1])
 
 fake_dir  <- dirname(fake_files[1])
 fake_dir
 list.files(fake_dir)
 
-# check
-xfun::read_utf8(fake_files[1])
+# ================
 
 remove(fake_dir)
+file.remove(fake_dir)
 
-}
+y  <- unlink(fake_dir, recursive=T, force=T)
+y
+
+if  (y == 0) print("Temp files and temp dir removed.")
+
 
 ```
 
@@ -43,22 +49,5 @@ file.remove(f)
 ```
 
 
-#### Works!
-#### play with ymlthis::
-```{r ymlthis}
-library(ymlthis)
-
-f  <- tempfile()
-f
-line1  <- ymlthis::as_yml("title: Big Project ")
-
-
-use_rmarkdown(.yml = line1,
-              path =f)
-
-# xfun::write_utf8(as.character(line1), f)
-xfun::read_utf8(f)
-remove(f)
-```
 
 
