@@ -21,5 +21,6 @@ Imports:
     lubridate,
     fs,
     stringr,
-		tibble
+		tibble,
+    xfun
 VignetteBuilder: knitr

@@ -1,0 +1,137 @@
+
+###  Change file names, add/remove prefix, use `base R`
+Main idea is this:
+  * Set dir, 
+  * Choose pattern to match files
+  * old = original file names
+  * new = proposed file names, with changes (using gsub)
+  * prepend the dir
+  * file.rename(old, new)
+
+#### base:: comands
+file.rename()
+file.create()
+basename()
+dirname()
+list.dirs()
+dir()
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+library(jimTools) 
+```
+
+### create fake files?   See  jimTools
+
+```{r get_fake}
+fake_files  <- jimTools::create_fake_files()
+fake_files
+
+fake_dir  <- dirname(fake_files[1])
+fake_dir  
+
+lapply(fake_files, jimTools::write_fake_file)
+
+list.files(fake_dir)
+
+# check
+xfun::read_utf8(fake_files[1])
+
+remove(fake_dir)
+
+```
+
+```{r functions}
+
+
+```
+
+```{r do_it, eval=F}
+
+
+# caution:
+
+## check that path is correct and has `/` as suffix
+path
+
+
+
+OLD  <- paste0(path, OLD)
+OLD
+
+NEW  <- paste0(path, NEW)
+
+## Unlike list.files(), file.rename() does not provide for `path`
+## Note they are not even in same family.
+
+
+
+```
+
+#### patterns
+```{r patterns}
+#  Choose pattern, 
+list.files("rmd", full.names= T, pattern="*.Rmd")
+list.files("./rmd", pattern="*.Rmd")
+list.files("./rmd", full.names = TRUE ,pattern="*.Rmd")
+pat  <-  "^[:digit:]{4,6}"
+pat  <-  `^[[:digit:]]{4,6}`
+pattern=  "^[0-9]*"
+pat  <-  `'^_'`
+pat  <- `'^_00056'`
+pat  <- "^_[[:digit:]]{5}"
+pat  <-  "^_[[:digit:]]{5,6}"
+pat  <-  "^[[:digit:]]{4,6}"
+pat  <-  "^_0[[:digit:]]{4,6}"
+pat  <- "^_NA"
+pat  <- "^NA"
+pat  <-  "^NA[[:digit:]]{4,6}"
+pat  <- "_NA_"
+pat  <- "^__"
+pat  <- "__+"    # + = 1 or more of SECOND _
+pat  <- "\\s+"    # 1 or more
+pat  <- "_._"   # any character between two '_'
+pat  <- "_.ogg"
+pat  <- "_\\."  # _ followed by literal .
+pat  <- "'"
+pat  <- "-"
+pat  <- ",_"
+#  match 06_Apr_2018
+pat  <-  "[[:digit:]]{2}_[[:alpha:]]{3}_[[:digit:]]{4}"
+pat  <-  "([[:digit:]]{2})_([[:alpha:]]{3})_([[:digit:]]{4})"
+# match 2018_04_06
+pat  <-  "([[:digit:]]{4})_([[:digit:]]{2})_([[:digit:]]{2})"
+```
+
+#### sprintf has some nice features!
+```{r sprint, include = F}
+sprintf("hello %s", "jim")
+
+sprintf("hello %s", 23)
+
+sprintf("hello %04s", 23)         # min of 4
+sprintf("hello %04f", 23)         # 23.000000
+
+sprintf("hello %04i", 23)         # int, min of 4 digits
+
+```
+
+```{r render, eval=FALSE, include=F	} 
+{
+
+file <- "0010_clean_file_names_use_base.Rmd"
+file  <- basename(file) 
+file  <- here("rmd", file)
+file
+}
+
+
+rmarkdown::render(file, output_format="pdf_document",
+                  output_dir="~/Downloads/print_and_delete")
+
+```
+
+
