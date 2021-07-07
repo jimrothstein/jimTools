@@ -12,3 +12,6 @@ write_fake_file(f)
 \description{
 Adds minimal content stub to fake file and writes to disk.
 }
+\details{
+if directory does not exist = errror;
+}

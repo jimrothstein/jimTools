@@ -2,14 +2,10 @@
 % Please edit documentation in R/change_file_names.R
 \name{save_old_names}
 \alias{save_old_names}
-\title{@title save_old_names
- @description
- safely save copy of original files in separate environmentt}
+\title{save_old_names}
 \usage{
 save_old_names(the_files = NULL)
 }
 \description{
-@title save_old_names
- @description
- safely save copy of original files in separate environmentt
+safely save copy of original files in separate environmentt
 }

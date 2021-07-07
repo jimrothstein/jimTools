@@ -16,11 +16,8 @@ Suggests:
     knitr
 RoxygenNote: 7.1.1
 Imports: 
-    purrr,
     rmarkdown,
     lubridate,
-    fs,
-    stringr,
-		tibble,
+    DT,
     xfun
 VignetteBuilder: knitr

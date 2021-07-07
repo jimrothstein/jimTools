@@ -19,17 +19,16 @@ list.files(fake_dir)
 
 # ================
 
-remove(fake_dir)
-file.remove(fake_dir)
-
-y  <- unlink(fake_dir, recursive=T, force=T)
-y
-
-if  (y == 0) print("Temp files and temp dir removed.")
-
+remove_sandbox(fake_dir)
 
 ```
 
+
+
+#### Change prefix for fake files
+jimTools::get_files
+
+TODO
 See:  xfun:: code
 #### create temp file, write content to it, modify it, read result
 ```{r}
@@ -39,10 +38,15 @@ f
 
 xfun::write_utf8("Hello World", f)
 
-# x is content of file
-xfun::process_file(f, function(x) 
-                   gsub("World", "woRld", x))
 
+## modify content in a file
+# x is content of file f; 
+#
+#
+modify_file_content  <- function(file, from , to){
+xfun::process_file(file, function(x) 
+                   sub("World", "woRld", x))
+}
 xfun::read_utf8(f)  # see if it has been updated
 
 file.remove(f)

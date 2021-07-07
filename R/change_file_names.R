@@ -1,16 +1,25 @@
-#'   @title get_files
-#'   @param path Path to directory.
-#'   @param pattern Use pattern (regex) to return subset of files.  If pattern is NULL, all files
+#'  get_files
+#'
+#' @description 
+#'  Returns character vector of files in path that match regex
+#'  pattern.
+#'
+#' @param path Path to directory.
+#'
+#' @param pattern Use pattern (regex) to return subset of files.  If pattern is NULL, all files
 #'  in path will be returned.
+#'
 #' @export
+#'
 get_files  <- function(path = NULL, pattern = NULL) {
   ## tests
   list.files(path, pattern)
 }
 
 
-#'  @title save_old_names
-#'  @description
+#'  save_old_names
+#'
+#' @description
 #'  safely save copy of original files in separate environmentt
 #' @export
 save_old_names  <- function(the_files = NULL) {
@@ -20,10 +29,11 @@ save_old_names  <- function(the_files = NULL) {
 
 
 #'  remove_prefix
-#'  @description Remove any existing prefix according to pattern
+#'
+#' @description Remove any existing prefix according to pattern
 #'  May need multiple passes
-#'  @param the_files character vector of all possible file names to be changed.
-#'  @param pattern Select the files to change.
+#' @param the_files character vector of all possible file names to be changed.
+#' @param pattern Select the files to change.
 #' @export
 remove_prefix  <- function(the_files = NULL, pattern = pattern) {
   sub(pattern=pattern, replace="", x=the_files)
@@ -31,9 +41,9 @@ remove_prefix  <- function(the_files = NULL, pattern = pattern) {
 
 
 #'  get_new_prefix
-#'  @description propose new prefix, min of digits
-#'  @param n length
-#'  @param digits  sprintf will nice format prefix, padding zeroes to front if
+#' @description propose new prefix, min of digits
+#' @param n length (number of file to renumber)
+#' @param digits  sprintf will nice format prefix, padding zeroes to front if
 #'  necessary.
 #' @export
   get_new_prefix  <- function(n=NULL, digits=4) {

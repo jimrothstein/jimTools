@@ -2,18 +2,16 @@
 % Please edit documentation in R/change_file_names.R
 \name{remove_prefix}
 \alias{remove_prefix}
-\title{remove_prefix
- @description Remove any existing prefix according to pattern
- May need multiple passes
- @param the_files character vector of all possible file names to be changed.
- @param pattern Select the files to change.}
+\title{remove_prefix}
 \usage{
 remove_prefix(the_files = NULL, pattern = pattern)
 }
+\arguments{
+\item{the_files}{character vector of all possible file names to be changed.}
+
+\item{pattern}{Select the files to change.}
+}
 \description{
-remove_prefix
- @description Remove any existing prefix according to pattern
+Remove any existing prefix according to pattern
  May need multiple passes
- @param the_files character vector of all possible file names to be changed.
- @param pattern Select the files to change.
 }

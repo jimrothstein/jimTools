@@ -2,16 +2,17 @@
 % Please edit documentation in R/change_file_names.R
 \name{get_files}
 \alias{get_files}
-\title{@title get_files
-  @param path Path to directory.
-  @param pattern Use pattern (regex) to return subset of files.  If pattern is NULL, all files
- in path will be returned.}
+\title{get_files}
 \usage{
 get_files(path = NULL, pattern = NULL)
 }
+\arguments{
+\item{path}{Path to directory.}
+
+\item{pattern}{Use pattern (regex) to return subset of files.  If pattern is NULL, all files
+in path will be returned.}
+}
 \description{
-@title get_files
-  @param path Path to directory.
-  @param pattern Use pattern (regex) to return subset of files.  If pattern is NULL, all files
- in path will be returned.
+Returns character vector of files in path that match regex
+ pattern.
 }

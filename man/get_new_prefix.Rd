@@ -2,18 +2,16 @@
 % Please edit documentation in R/change_file_names.R
 \name{get_new_prefix}
 \alias{get_new_prefix}
-\title{get_new_prefix
- @description propose new prefix, min of digits
- @param n length
- @param digits  sprintf will nice format prefix, padding zeroes to front if
- necessary.}
+\title{get_new_prefix}
 \usage{
 get_new_prefix(n = NULL, digits = 4)
 }
+\arguments{
+\item{n}{length (number of file to renumber)}
+
+\item{digits}{sprintf will nice format prefix, padding zeroes to front if
+necessary.}
+}
 \description{
-get_new_prefix
- @description propose new prefix, min of digits
- @param n length
- @param digits  sprintf will nice format prefix, padding zeroes to front if
- necessary.
+propose new prefix, min of digits
 }
