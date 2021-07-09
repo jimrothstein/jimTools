@@ -1,10 +1,12 @@
 #  PURPOSE:   test create, remove of fake files
 
-
-#### Create fake temp files and then remote
-```{r fake}
+# file <- "/home/jim/code/jimTools/tests/testthat/test-SANDBOX.R"
+#
+##
 load_all()
-fake_files  <- create_fake_files()
+
+## create tmpdir and empty tempfile
+fake_files  <- create_sandbox()
 fake_files
 
 

@@ -2,17 +2,21 @@
 % Please edit documentation in R/compress.R
 \name{get_compressed_file_name}
 \alias{get_compressed_file_name}
-\title{@title get_compressed_file_name}
+\title{get_compressed_file_name}
 \usage{
 get_compressed_file_name(prefix = NULL, dir = NULL)
 }
+\arguments{
+\item{prefix}{prefix name}
+
+\item{dir}{directory}
+}
+\value{
+
+}
 \description{
-@description Given a prefix and dir, returns name of compressed file.
+Given a prefix and dir, returns name of compressed file.
 }
-\details{
-@param prefix prefix name
- @param dir directory 
- @keywords backup compress helper
- @return 
- @export
-}
+\keyword{backup}
+\keyword{compress}
+\keyword{helper}

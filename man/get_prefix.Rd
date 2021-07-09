@@ -2,13 +2,16 @@
 % Please edit documentation in R/compress.R
 \name{get_prefix}
 \alias{get_prefix}
-\title{@title get_prefix}
+\title{get_prefix}
 \usage{
 get_prefix()
 }
-\description{
-@description  prepares date-based prefix for final compressed file. 
- @keywords backup compress helper
- @return 
- @export
+\value{
+
 }
+\description{
+prepares date-based prefix for final compressed file.
+}
+\keyword{backup}
+\keyword{compress}
+\keyword{helper}
