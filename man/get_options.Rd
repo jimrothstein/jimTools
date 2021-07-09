@@ -9,3 +9,4 @@ get_options()
 \description{
 get_options returns tibble of options
 }
+\keyword{internal}

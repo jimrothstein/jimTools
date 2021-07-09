@@ -6,8 +6,7 @@
  Ignores files that begin with '_'
  @param path  Directory to query. 
  @param pattern regex pattern to match files 
- @return full file name (with directory)
- @export}
+ @return full file name (with directory)}
 \usage{
 get_RMD_files(path = ".", pattern = NULL, recursive = FALSE)
 }
@@ -17,5 +16,6 @@ get_RMD_files(path = ".", pattern = NULL, recursive = FALSE)
  @param path  Directory to query. 
  @param pattern regex pattern to match files 
  @return full file name (with directory)
- @export
 }
+\keyword{@export}
+\keyword{internal}

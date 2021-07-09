@@ -19,3 +19,4 @@ jim_str(X = NULL, max.level = 1, vec.len = 1)
 \description{
 friendly version of str()
 }
+\keyword{internal}

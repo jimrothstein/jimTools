@@ -6,11 +6,28 @@ create_sandbox <- function() {
 
   ## check if already exists
   #
-  ## if new sandbox
+  ## tempdir() only returns a name 
     tempdir = tempdir()
     tempdir
+
+    ## create the directory if one does not exist
     if (!dir.exists(tempdir)) dir.create(tempdir)
 
+    ## return tempdir name
+    return(tempdir)
+}
+
+#' @title add_files_sandbox
+#'
+#' @export
+#'
+add_files_sandbox  <- function(tempdir = tempdir, the_files = NULL) {
+  ## check, dir exist?
+  ##
+  ##
+  ## if the_files = NULL; then create tmp files
+  ## Otherwise, use the_files user provided.
+  if (is.null(the_files)) {
   ## TODO  allow user to choose pattern | ext
   ## create fake files for sandbox
     pattern=paste0(1:5,"_")
@@ -18,12 +35,12 @@ create_sandbox <- function() {
 
     fileext = ".mp3"
 
-    tempfile(pattern , tempdir, fileext) 
-
-  ## TODO
-  ## use touch to put fake files on disk
+    the_files  <- tempfile(pattern , tempdir, fileext) 
+  } 
+  file.create(paste0(tempdir, "/", the_files))
 }
-
+   
+  
 
 
 #' @title adds content to fake file

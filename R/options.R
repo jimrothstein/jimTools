@@ -2,6 +2,7 @@
 #'
 #'
 #'
+#' @keywords internal
 #' @export
 get_options  <- function() {
 

@@ -19,3 +19,4 @@ ren_pdf(file, dir)
 ren_github(file,dir)
 render rmd to pdf
 }
+\keyword{internal}

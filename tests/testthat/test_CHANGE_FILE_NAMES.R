@@ -1,9 +1,10 @@
 file <- "/home/jim/code/jimTools/tests/testthat/test_change_file_names.R"
 
 ## setup
+## create tmpdir and empty tempfile
+##
 {
   load_all()
-## create tmpdir and empty tempfile
   the_files  <- create_sandbox()
 
   ## write a bit of content
@@ -16,27 +17,22 @@ file <- "/home/jim/code/jimTools/tests/testthat/test_change_file_names.R"
 
 
 
-
-
 ## now change prefixes
 ## careful
 # rename_files(OLD, NEW)
-#
-#
-#
-load_all()
-{
-  path  <- the_dir
-  path
-#  path  <- "~/mp3_files"
-
-  pattern  <- NULL
-
+## test files in sandbox ONLY
   ## NOTE:  work with just basenames; final step add dir
   ## all files in directory
+
+## 
+
+  path  <- the_dir
+  pattern = ""
+
   the_files  <- jimTools::get_files(path=path, pattern=pattern)
   the_files
-
+{
+  ##
   ## save in separate env
   save_old_names(the_files)
 
@@ -107,6 +103,39 @@ list.files(path)
 remove_sandbox(path)
 
 
+#### patterns
+```{r patterns}
+#  Choose pattern, 
+list.files("rmd", full.names= T, pattern="*.Rmd")
+list.files("./rmd", pattern="*.Rmd")
+list.files("./rmd", full.names = TRUE ,pattern="*.Rmd")
+pattern  <-  `^[[:digit:]]{4,6}`
+patterntern=  "^[0-9]*"
+pattern  <-  `'^_'`
+pattern  <- `'^_00056'`
+pattern  <- "^_[[:digit:]]{5}"
+pattern  <-  "^_[[:digit:]]{5,6}"
+pattern  <-  "^[[:digit:]]{4,6}"
+pattern  <-  "^_0[[:digit:]]{4,6}"
+pattern  <- "^_NA"
+pattern  <- "^NA"
+pattern  <-  "^NA[[:digit:]]{4,6}"
+pattern  <- "_NA_"
+pattern  <- "^__"
+pattern  <- "__+"    # + = 1 or more of SECOND _
+pattern  <- "\\s+"    # 1 or more
+pattern  <- "_._"   # any character between two '_'
+pattern  <- "_.ogg"
+pattern  <- "_\\."  # _ followed by literal .
+pattern  <- "'"
+pattern  <- "-"
+pattern  <- ",_"
+#  match 06_Apr_2018
+pattern  <-  "[[:digit:]]{2}_[[:alpha:]]{3}_[[:digit:]]{4}"
+pattern  <-  "([[:digit:]]{2})_([[:alpha:]]{3})_([[:digit:]]{4})"
+# match 2018_04_06
+pattern  <-  "([[:digit:]]{4})_([[:digit:]]{2})_([[:digit:]]{2})"
+```
 
 
 

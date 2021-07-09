@@ -7,6 +7,7 @@
 #' @param vec.len number of  elements to show at each level
 #' 
 #' @return 
+#' @keywords internal
 #' @export
 jim_str  <- function(X=NULL, max.level =1 , vec.len =1 ){
     if (is.null(X) ) print("help:   X, max.level, vec.len")

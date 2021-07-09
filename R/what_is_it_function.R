@@ -1,11 +1,13 @@
 # jimPackage, function:  what is it
 # returns details about r object
 
-library(tidyverse)
-library(tibble) # I need this?
+# library(tidyverse)
+# library(tibble) # I need this?
 
 # from: 040_jennybc_function_what_is_it.R
-
+#' @title what_is_it
+# @desciption Tries to figure out what kind of vector
+#' @keywords internal
 # ---- what_is_it ----
 what_is_it <-function(v){
         testName<-c("tibble",

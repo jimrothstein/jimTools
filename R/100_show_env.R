@@ -1,4 +1,5 @@
 #' show_env
+#' @keywords internal
 #' @export
 show_env <- function(){
   list(ran.in = environment(),     # temporary (active, or runtime) env

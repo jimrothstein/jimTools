@@ -6,6 +6,7 @@
 #' 
 #' 
 #' @return 
+#' @keywords internal
 #' @export
 ren_pdf  <- function(file, dir) {
 rmarkdown::render(
@@ -62,6 +63,7 @@ ren_file <- function(file,
 #'  \dontrun{
 #'    sum("a")
 #'    }
+#' @keywords internal
 #' @export
 ren_github  <- function(x=NULL, output_dir= "./md") {
 rmarkdown::render(x,

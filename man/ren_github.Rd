@@ -37,3 +37,4 @@ render rmd to .md github format
 \seealso{
 many places for more info.
 }
+\keyword{internal}

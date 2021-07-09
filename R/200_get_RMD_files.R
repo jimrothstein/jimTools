@@ -7,6 +7,7 @@
 #'  @param path  Directory to query. 
 #'  @param pattern regex pattern to match files 
 #'  @return full file name (with directory)
+#' @keywords internal
 #'  @export
    get_RMD_files  <- function (path = ".", pattern = NULL, recursive = FALSE) {
      #

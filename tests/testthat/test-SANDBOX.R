@@ -5,11 +5,45 @@
 ##
 load_all()
 
+library(ttdo)
+library(tinytest)
+tinytest::using(ttdo)  ## use tinytest extension mechanism
+     tt <- tinytest::expect_equal(1+1, 2)
+tt
+     if (isTRUE(tt)){
+       print("w00p w00p!")
+     } else {
+       print("Oh no!")
+     }
+
+
+
+
+{
 ## create tmpdir and empty tempfile
-fake_files  <- create_sandbox()
-fake_files
+## should return name of dir
+tempdir  <- create_sandbox()
+tempdir
+
+}
+
+{
+## Add a file
+the_files = c("_NA_( 123")
+add_files_sandbox(tempdir = tempdir, the_files=the_files)
+
+## Check
+dir(tempdir)
+}
+
+{
+remove_sandbox(tempdir)
+dir(tempdir)
+list.files(tempdir)
+}
 
 
+# LEGACY
 lapply(fake_files, write_fake_file)
 
 # check
@@ -21,7 +55,6 @@ list.files(fake_dir)
 
 # ================
 
-remove_sandbox(fake_dir)
 
 ```
 
