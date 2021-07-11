@@ -1,14 +1,14 @@
 
 
-# #'  @title get_RMD_files
+#' @title get_RMD_files
 #'
-#'  @description  Given a path and pattern, return char vector of file names.
-#'  Ignores files that begin with '_'
-#'  @param path  Directory to query. 
-#'  @param pattern regex pattern to match files 
-#'  @return full file name (with directory)
+#' @description  Given a path and pattern, return char vector of file names.
+#' Ignores files that begin with '_'
+#' @param path  Directory to query. 
+#' @param pattern regex pattern to match files 
+#' @return full file name (with directory)
 #' @keywords internal
-#'  @export
+#' @export
    get_RMD_files  <- function (path = ".", pattern = NULL, recursive = FALSE) {
      #
      #rmd_pattern  <- '[.][Rr](md|markdown)$'

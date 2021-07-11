@@ -25,6 +25,7 @@ rmarkdown::render(
 #' 
 #' 
 #' @return 
+#' @keywords internal
 #' @export
 ren_file <- function(file, 
                       output_format="html_document",

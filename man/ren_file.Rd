@@ -25,3 +25,4 @@ ren_file(
 ren_html (file,dir)
 render rmd to html
 }
+\keyword{internal}

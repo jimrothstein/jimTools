@@ -2,20 +2,20 @@
 % Please edit documentation in R/200_get_RMD_files.R
 \name{get_RMD_files}
 \alias{get_RMD_files}
-\title{@description  Given a path and pattern, return char vector of file names.
- Ignores files that begin with '_'
- @param path  Directory to query. 
- @param pattern regex pattern to match files 
- @return full file name (with directory)}
+\title{get_RMD_files}
 \usage{
 get_RMD_files(path = ".", pattern = NULL, recursive = FALSE)
 }
-\description{
-@description  Given a path and pattern, return char vector of file names.
- Ignores files that begin with '_'
- @param path  Directory to query. 
- @param pattern regex pattern to match files 
- @return full file name (with directory)
+\arguments{
+\item{path}{Directory to query.}
+
+\item{pattern}{regex pattern to match files}
 }
-\keyword{@export}
+\value{
+full file name (with directory)
+}
+\description{
+Given a path and pattern, return char vector of file names.
+Ignores files that begin with '_'
+}
 \keyword{internal}

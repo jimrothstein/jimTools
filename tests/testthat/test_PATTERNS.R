@@ -1,5 +1,6 @@
 
 ###  Change file names, add/remove prefix, use `base R`
+{
 Main idea is this:
   * Set dir, 
   * Choose pattern to match files
@@ -15,59 +16,67 @@ basename()
 dirname()
 list.dirs()
 dir()
-
-```{r setup, include=FALSE		}
-knitr::opts_chunk$set(echo = TRUE,  
-											comment="      ##",  
-											error=TRUE, 
-											collapse=TRUE) 
-library(jimTools) 
-```
-## create tmpdir
-{
-  load_all()
-## create tmpdir and empty tempfile
-  the_files  <- create_sandbox()
+}
 
 
-  the_dir  <- dirname(the_files[1])
+{ ## working, sub
+  # sub(x = "_NA", pattern = "_NA", replacement = "NA")
+# list of strings, pattern, replacement when matches
+l  <- list(
+           c("_NA_jim", "^_NA", "_"),
+           c("NA_jim", "NA", ""),
+           c("_.ogg", "_.ogg$", ".ogg"),
+           c("jim_.ogg", "_.ogg$", ".ogg"),
+           c("___","__+", "_"   ),  # + = 1 or more of SECOND _
+           c("_____","__+", "_"   )  # + = 1 or more of SECOND _
+           )
+
+f  <- function(e) {
+sub(x = e[[1]],
+    pattern = e[[2]],
+    replacement = e[[3]])
 
 }
 
-## create some files
-{ 
-  f  <- c('_NA_-myname is ( 2004')
-  the_dir  <- dirname(the_files[1])
-  file.create(paste0(the_dir,"/",f))
+lapply(l, f)
 }
 
-{
+{ ## VERSION .2   DT
+##
+library(rdatatable)
+  create_dt  <- function () {
+    DT = data.table(
+      before = "_NA",
+      regex = "_NA",
+      replace = "NA"
+    )
+    return(DT)
+}
 
-  path  <- the_dir
-  pattern  <- NULL
-  the_files  <- jimTools::get_files(path=path, pattern=pattern)
-  the_files
+dt  <- create_dt()
+dt
+}
 
-## test patterns
-{
-  path  <- the_dir
-  pattern  <- c("^_NA",
-                "_NA_")
-  x.0  <- list.files(path, pattern=pattern)
-  x.0
+{ ## try sub - nope NOT vectorized
+  sub(x = "_NA", pattern = "_NA", replacement = "NA")
+x  <- c("_NA", "NA")
+pattern  <- c( "^_NA", "^NA" )
+replacement <- c("_", "_")
+sub(x = x,
+    pattern = pattern,
+    replacement = replacement)
 
-screen  <- function(pattern = pattern) {
-    list.files(path = path, pattern = pattern)
-  }
-screen(pattern = pattern)
 
-## each screen uses same path, but with different path
-lapply(pattern, screen)
 
 }
 
-#### patterns
-```{r patterns}
+
+
+
+
+
+## available patterns
+{
 #  Choose pattern, 
 list.files("rmd", full.names= T, pattern="*.Rmd")
 list.files("./rmd", pattern="*.Rmd")
@@ -99,12 +108,12 @@ pat  <-  "[[:digit:]]{2}_[[:alpha:]]{3}_[[:digit:]]{4}"
 pat  <-  "([[:digit:]]{2})_([[:alpha:]]{3})_([[:digit:]]{4})"
 # match 2018_04_06
 pat  <-  "([[:digit:]]{4})_([[:digit:]]{2})_([[:digit:]]{2})"
-```
+}
 
 
-  a   
-#### sprintf has some nice features!
-```{r sprint, include = F}
+   
+## sprintf has some nice features!
+{
 sprintf("hello %s", "jim")
 
 sprintf("hello %s", 23)
@@ -113,26 +122,6 @@ sprintf("hello %04s", 23)         # min of 4
 sprintf("hello %04f", 23)         # 23.000000
 
 sprintf("hello %04i", 23)         # int, min of 4 digits
-
-```
-{ ##  create DT
-library(rdatatable)
-  create_dt  <- function () {
-    DT = data.table(
-      before = "_NA",
-      regex = "_NA",
-      replace = "NA"
-    )
-    return(DT)
 }
-
-dt  <- create_dt()
-dt
-}
-
-{ ## try sub
-  sub(x = "_NA", pattern = "_NA", replacement = "NA")
-}
-
 
 
