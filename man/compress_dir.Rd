@@ -26,9 +26,9 @@ system, if the_dirs is list of complete diretory paths}
 }
 \description{
 compress_dir()  creates .tar.gz file
-   if type is system, zipped file will be placed in toGoogle dir
-   if type is project, zipped file will be placed in compressed folder in
-   this package.
+if type is system, zipped file will be placed in toGoogle dir
+if type is project, zipped file will be placed in compressed folder in
+this package.
 }
 \keyword{backup}
 \keyword{compress}

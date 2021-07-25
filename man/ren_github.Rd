@@ -20,8 +20,7 @@ render rmd to .md github format
 \details{
 ====================================
 
-
- No details.
+No details.
 }
 \examples{
  ren_github(x=here("rmd", "001_compress.Rmd"))

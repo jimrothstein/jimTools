@@ -1,0 +1,89 @@
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[latin1]{inputenc} % @SET ENCODING@
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Functions for Package TAGS::}}
+\par\bigskip{\large \today}
+\end{center}
+\inputencoding{utf8}
+\HeaderA{fetch\_yaml}{fetch\_yaml}{fetch.Rul.yaml}
+%
+\begin{Description}\relax
+fetch\_yaml
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+fetch_yaml(x)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Value}
+everything between --- inclusive, char vector
+\end{Value}
+\inputencoding{utf8}
+\HeaderA{get\_files}{@title get\_files}{get.Rul.files}
+%
+\begin{Description}\relax
+@description  Given a path and pattern, return char vector of file names.
+Ignores files that begin with '\_'
+@param path  Directory to query.
+@param pattern Regex pattern to match files
+@param recursive Default is F.
+@return list of full file name (with directory)
+@seealso
+\begin{itemize}
+
+\item{} \LinkA{get\_TAGS}{get.Rul.TAGS}
+@export
+
+\end{itemize}
+
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_files(path = ".", pattern = NULL, recursive = FALSE)
+\end{verbatim}
+\end{Usage}
+\inputencoding{utf8}
+\HeaderA{get\_header}{@title get\_header @description   Wrapper for yaml\_front\_matter.  Removes "---"; returns list. ie header\$TAGS (if exists) and contents are char\LinkA{1}{1}}{get.Rul.header}
+%
+\begin{Description}\relax
+@param files. char[] of file names.
+@return char\LinkA{1}{1} For ONE file, returns yaml header.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_header(files = NULL)
+\end{verbatim}
+\end{Usage}
+\inputencoding{utf8}
+\HeaderA{get\_TAGS}{@title get\_TAGS}{get.Rul.TAGS}
+%
+\begin{Description}\relax
+@description Given one yaml header (everything between \AsIs{---} inclusive), return the line begins with \AsIs{TAGS:}  Return NA if no line contains \AsIs{TAGS:}.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_TAGS(header)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{header}] For one file, header is named list. Each name entry represents
+a single yaml line and its contents.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+char\LinkA{1}{1} that is content of TAGS:
+\end{Value}

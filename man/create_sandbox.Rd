@@ -2,13 +2,13 @@
 % Please edit documentation in R/sandbox_files.R
 \name{create_sandbox}
 \alias{create_sandbox}
-\title{reate_sandbox}
+\title{create_sandbox}
 \usage{
 create_sandbox()
 }
 \value{
-character vector of full path fake file names.
+character\link{1} the tmp dir created.
 }
 \description{
-create a sandbox; fake dir,  numbered fake file names.
+create a sandbox; fake dir.
 }

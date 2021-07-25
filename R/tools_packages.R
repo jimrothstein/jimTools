@@ -1,4 +1,4 @@
-#' jr_install.packages
+#'file <- "tools_packages.R' jr_install.packages"
 #'
 #' @param pkg_names   packages to install
 #' @export
@@ -35,17 +35,17 @@ jr_package_dependencies  <- function(package = NULL) {
 }
 
 #' jr_package_dependencies_reverse
-#'
-#' @param package package or packages depend on this one?
+#' 
+#' @param package Which package or packages depend on this one?
 #' @export
 jr_package_dependencies_reverse  <- function(package = NULL) {
  	#tools::package_dependencies(package,reverse=TRUE	)
 
 	tools::dependsOnPkgs(package,
                    dependencies = c("Depends", "Imports", "LinkingTo"),
-                   recursive = TRUE, lib.loc = NULL,
-                   installed =
-                   utils::installed.packages(lib.loc, fields = "Enhances"))
+                   recursive = TRUE, lib.loc = NULL)
+
+                   #installed = utils::installed.packages(lib.loc, fields = "Enhances"))
 }
 
 #' jr_set_env 

@@ -1,6 +1,6 @@
-#' @title reate_sandbox
-#' @description  create a sandbox; fake dir,  numbered fake file names.
-#' @return character vector of full path fake file names.
+#' @title create_sandbox
+#' @description  create a sandbox; fake dir.  
+#' @return character[1] the tmp dir created.
 #' @export
 create_sandbox <- function() {
 
@@ -17,12 +17,17 @@ create_sandbox <- function() {
     return(tempdir)
 }
 
+#' fake function
+#' @description Example of inherit.
+#' @inheritParams create_sandbox
+fake  <- function(){}
+
 #' @title populate_sandbox
 #' @export
 #'
 populate_sandbox  <- function(tempdir = tempdir, the_files = NULL) {
   ## check, dir exist?
-  is_valid_path("/x")
+  if (! .is_valid_path(tempdir)) stop("error: tempdir issue ", class="directory")
 
   ##
   ## if the_files = NULL; then create tmp files
@@ -38,6 +43,7 @@ populate_sandbox  <- function(tempdir = tempdir, the_files = NULL) {
     the_files  <- tempfile(pattern ,tmpdir = tempdir, fileext) 
   } 
   file.create(the_files)
+  the_files
 }
    
   
