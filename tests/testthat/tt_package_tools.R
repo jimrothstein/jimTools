@@ -6,6 +6,7 @@ file <- "../tests/testthat/tt_package_tools.R"
 ##
 load_all()
 library(tinytest)
+library(data.table)
 
 {
   ## find packages which depend on this one
@@ -19,6 +20,8 @@ library(tinytest)
 # in my home directory, and
 # in /usr/local/lib/R/library
 .libPaths()
+dt  <- as.data.table(.libPaths())
+dt
 }
 
 {
@@ -87,6 +90,7 @@ old.packages()
 
 # x is list
 x  <- packageStatus()
+x
 typeof(x)
 str(x)
 print(x)
@@ -95,21 +99,22 @@ print(x)
 summary(x)
 }
 
-## install.packages (using DT)
+## BEGIN DT:  install.packages (using DT)
 
 ```{r installed_use_DT}
-library(data.table)
 library(microbenchmark)
 
 # 4.5 ms
 microbenchmark( installed  <- tibble::as_tibble(installed.packages()))
 
-dt  <- as.data.table(installed)
-names(dt)
+dt  <- as.data.table(installed.packages()) 
+str(dt)
+head(dt)
+
 
 # remove uneeded fields
 # .()  is alias for list()
-dt  <- dt[, .(Package,  OS_type, NeedsCompilation, Built)]
+dt  <- dt[, .(Package, Version, Depends, Imports, LinkingTo, Suggests, Enhances,  OS_type, NeedsCompilation, Built)]
 dt %>% head()
 
 # count, group by version of Build ( = version)
@@ -118,14 +123,36 @@ dt[,.(.N)    , by=.(Built)]
 # same
 dt[, .N, by = .(Built)]   
 
-dt[, .N, by = "OS_type"]  # all <NA>
-dt[, .N, by = .(OS_type)]  # all <NA>
+## SAME
+  dt[, .N, by = "OS_type"]  # all <NA>
+  dt[, .N, by = .(OS_type)]  # all <NA>
 
-dt[, .N, by = .(NeedsCompilation)]   # 141 need!
+## Compilation
+  dt[, .N, by = .(NeedsCompilation)]   # 141 need!
+
+## Suggests (hmmm, not normalized)
+  dt[, .N, by = .(Suggests)][order(-N)] %>% head()
+
+
+
+
+
 
 # create subset, needs compilation
 x  <- dt[NeedsCompilation == "yes"]
 ```
+
+### Seems to be repeat of information
+{
+  # list, not data.frame
+  status  <- packageStatus()
+  status
+  s  <- as.data.table(status$inst)
+  s
+  s[, .N, by= .( Status)]
+}
+
+if (F) status$avail    # long list
 
 
 
@@ -133,10 +160,19 @@ x  <- dt[NeedsCompilation == "yes"]
 
 ## List all packages + description, by library location
 ```{r library}
-library()
 
-(.packages())
-(.packages(all.available  = TRUE))
+## list all packages in lib.loc
+   obj  <- library()
+
+   class(obj)
+# [1] "libraryIQR"
+
+
+## packages currently attached
+  (.packages())
+
+## packages available
+  (.packages(all.available  = TRUE))
 ```
 
 ## List Default Packages ?? Explain
@@ -202,9 +238,10 @@ packageDescription(pkg)[c("Imports", "Suggests")]
 ## sessioninfo::package_info()
 ```{r package_info}
 # For Installed Packages, yields dependencies
-sessioninfo::package_info(pkg="tibble")
+  sessioninfo::package_info(pkg="tibble")
 
-sessioninfo::package_info()
+## currently loaded packages
+  sessioninfo::package_info()
 ```
 
 ```{r startup}

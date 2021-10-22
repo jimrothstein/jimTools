@@ -1,0 +1,13 @@
+autocd
+autonamedirs
+autopushd
+nobeep
+nocaseglob
+emacs
+extendedglob
+interactive
+login
+monitor
+promptsubst
+shinstdin
+zle

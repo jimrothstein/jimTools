@@ -4,9 +4,9 @@ date: "`r paste('last updated',
     format(lubridate::now(), ' %d %B %Y'))`"
 output:   
   html_document:  
-        code_folding: show
+        code_folding:  hide 
         toc: true 
-        toc_depth: 2
+        toc_depth: 4
         toc_float: true
   pdf_document:   
     latex_engine: xelatex  
@@ -14,10 +14,130 @@ output:
     toc_depth:  2   
 fontsize: 11pt   
 geometry: margin=0.5in,top=0.25in   
-TAGS:  update,RPI,cleanup!,
+TAGS:  update,RPI,cleanup!,R_HOME, R_LIBS_USER
 ---
 
-## Upgrade R from 4.0.3 to 4.0.4
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+library(data.table)
+library(magrittr)
+```
+
+####  Problem
+
+Normally, I use neovim + plugin nvim-R as my IDE.  Recently I tried to install
+RStudio but ran into errors.
+
+
+#### Directories
+
+Seems each time I update R, I run into trouble with one or more directories
+that R uses.   The reasons probably relate to the past of switching from RStudio to
+neovim or compiling from source one time and using binaries the next.
+
+Over time, my R setup has collected diretories with various permuations of "lib", "library", "local."
+Rather than sort it all out, I decided to remove R and begin again. 
+
+I found this the Ubuntu/Debian instructions helpful:
+https://ftp.osuosl.org/pub/cran/bin/linux/debian, which explains some of R
+environmental variables.
+
+
+#### Organization
+
+
+So here I collect useful R environment variables I found to be important.  To
+ease navigation, I also set shell environment variables (I use zsh ) to match R.
+
+Of course, your experience will differ, but getting a good grasp on the
+R environment variables may avoid some future pain.
+
+```{r data.table}
+R_env  <- c("R_HOME", 
+            "R_LIBS_USER", 
+            "R_LIBS_SITE",
+            NA,
+            NA) 
+
+paths  <- c("/usr/lib/R/",
+            "/home/jim/R/x86_64-pc-linux-gnu-library/4.1/",
+            "/usr/lib/R/library/",
+            "/etc/R/Renviron",
+            "~/.Renviron")
+
+zsh_env  <- c("R_HOME", 
+            "R_LIBS_USER", 
+            "R_LIBS_SITE",
+            NA,
+            NA)
+
+
+
+dt  <- data.table(R_env = R_env,
+                  path = paths,
+                  zsh_env = zsh_env)
+
+```
+
+```{r show_env}
+
+dt %>% knitr::kable()
+```
+
+#### Special notes 
+  *  Ending slash indicates a directory:   (/usr/lib/R/library/)
+  *  No ending slash indicates a file:           ( ~/.Renviron )
+  *  The file Renviron in directory /etc/R/   sets many environment variables,
+    including $R_LIBS_SITE.  $R_LIBS_SITE is important because it designates a
+    base one more directories for R packages.
+  *  I pruned $R_LIBS_SITE to include only one directory:  /usr/lib/R/library/
+  *  Because there are a couple of ways to install R packages (from Debian,
+    from source, from inside R, ...) I may decide later to modify this. 
+  *  (future) There are other environment variables that may be useful, for
+    example R_ENVIRON, R_ENVIRON_USER but I did not use these.
+
+#### Checking
+Here is one way to confirm which directories R is using for packages.
+
+```{r functions}
+.libPaths()
+```
+
+####  Another way is through Sys.getenv() to find R env variables
+  *  R_HOME
+  *  R_LIBS_SITE
+  *  R_LIBS_USER
+
+```{r Sys, include=F}
+s  <- Sys.getenv()
+names  <- names(s)
+head(names)
+head(s[grep(pattern = "^R", x = names)])
+s[grep(pattern = "^R_LIBS", x = names)]
+```
+```{r R_LiBS}
+
+s[grep(pattern = "^R_LIBS", x = names)]
+```
+
+```{r help_files,include=F}
+if (F) help(.libPaths)
+
+```
+
+####  Troubleshooting
+  *  R --vanilla,  skips profile and any user set R environment variables.
+
+
+```{r exit}
+knitr::knit_exit()
+```
+
+
+## (got me into trouble) Upgrade R from 4.0.3 to 4.0.4
 *  on Rpi 400
 *  from source, *.tar.gz
 *  follow directions (R install & admin guide)
@@ -31,50 +151,25 @@ TAGS:  update,RPI,cleanup!,
 *  run try_things_here/0088_base package commands. (shows which dir/which
   pkgs)
 
-## Where am I?
-```{r}
 
-x  <- packageStatus()
-print(x)
-```
 
-```{r setup, include=FALSE		}
-knitr::opts_chunk$set(echo = TRUE,  
-											comment="      ##",  
-											error=TRUE, 
-											collapse=TRUE) 
-library(jimTools) 
-```
 
-TODO   put this into R
-prepend "0" to file names (put into jimTools)
-```{r prepend_file_name}
-# base tools only
-prepend  <- "0"
-the_dir  <- "rmd"
-old  <- list.files(the_dir, pattern = "*.Rmd")
-old
-new  <- paste0(prepend, old)
-new
-if (FALSE )
-file.rename(here(the_dir, old), 
-            here(the_dir, new))
 
-```
-***
+```{r render, eval=FALSE, include = F	} 
+{
+file <- "/home/jim/code/jimTools/rmd/0999_R_upgrade_notes.rmd"
+file <- "rmd/0999_R_upgrade_notes.rmd"
+file  <- basename(file)
+file
+file  <- paste0("rmd/",file)
+file
+}
+file <- "rmd/0999_R_upgrade_notes.rmd"
+rmarkdown::render(file, 
+                  output_format="html_document",
+                  #output_format="pdf_document",
+                  output_dir="~/Downloads/print_and_delete")
 
-```{r knit_exit()} 
-knitr::knit_exit() 
-```
 
-/newpage
 
-```{r render, eval=FALSE	} 
-file <- "rmd/0008_file_numbers.Rmd" 
-file  <- basename(file) 
-dir <-"rmd"
-
-jimTools::ren_file(here(dir,file))
-jimTools::ren_pdf(file,dir)
-jimTools::ren_github(file, dir)
 ```
