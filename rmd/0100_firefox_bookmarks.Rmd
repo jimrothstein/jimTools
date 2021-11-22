@@ -1,0 +1,195 @@
+---
+title: Template for .Rmd
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    toc:  TRUE
+    toc_depth:  1
+fontsize: 12pt
+geometry: margin=0.5in,top=0.25in
+#  md_document:
+#  html_document:
+#    toc: true
+#  	toc_float: true
+#    css: styles.css
+TAGS:  jsonlite, FF bookmarks,
+---
+Compress and Archive Files on Laptop
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+                      comment="      ##",  
+                      error=TRUE, 
+                      collapse=TRUE)
+load_all()
+library(jsonlite)
+library(data.table)
+library(magrittr)
+```
+
+#### walk down json
+```{r}
+b  <- fromJSON("~/Downloads/print_and_delete/bookmarks-2021-11-16.json")
+
+str(b, max.level=1, vec.len=5)
+
+str(b$children, max.level=1, vec.len=5)
+str(b$children$children, max.level=1, vec.len=5)
+
+## Looks like bookmark folder ... then child with all the bookmarks
+
+## 1st table (bookmarksmenu?) 17 x 12
+str(b$children$children[[1]], max.level=1, vec.len=5)
+df1  <- data.table(b$children$children[[1]])
+df1 |> head()
+
+## 2nd (toolbar)
+str(b$children$children[[2]], max.level=1, vec.len=5)
+df2  <- data.table(b$children$children[[2]])
+df2
+{
+## grab milf
+df2[title == "mlif"]
+mlif_db  <- df2[title == "mlif"]$children
+mlif_db  <- df2[title == "mlif"]$children[[1]]
+
+## this is it.
+mlif_db
+is.data.frame(mlif_db)
+# [1] TRUE
+is.data.table(mlif_db)
+# [1] FALSE
+mlif_db  <- data.table(mlif_db)
+str(mlif_db)
+length(mlif_db)
+mlif_db[[1]] |> head()
+mlif_db[[2]] |> head()
+mlif_db[[3]] |> head()
+
+# yes!
+mlif_db[, .(index,title)]
+}
+## 3rd (unfiled)
+str(b$children$children[[3]], max.level=1, vec.len=5)
+df3  <- data.table(b$children$children[[3]])
+head(df3)
+
+## 4th (mobile)
+str(b$children$children[[4]], max.level=1, vec.len=5)
+
+
+
+```
+
+
+```{r render, eval=FALSE	}
+file <- "001_compress_files.Rmd"
+file  <- basename(file)
+dir="rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+
+## Which dir to backup?
+```{r dir}
+dir  <- "~/Downloads/documents"
+dir
+
+```
+
+
+## Prepare prefix for compressed file
+```{r prefix}
+prefix  <- get_prefix()
+prefix
+```
+
+## Prepare full-name of compressed file
+```{r file_name}
+out_file  <- get_compressed_file_name(prefix, dir)
+out_file
+```
+
+
+jr_compress_dir()
+```{r begin}
+
+compress_dir(prefix, out_file, type="system", dir)
+
+
+# dir = directory (under project root) 
+jr_compress_dir(type = "project", dir = "rmd")
+jr_compress_dir(type = "project", dir = "R")
+```
+
+### FAILS ...
+### tar
+*  add include/exclude files dir?
+*  tar -tf <archive>   to list files
+
+```{r tar}
+
+    output_dir  <-  "~/Downloads/toGoogle"
+    output_dir  <- here("rmd") 
+    dir  <- here("~/Downloads/documents")  #  to backup
+    out_file  <- "test_compress.tar.gz"
+    tar( tarfile = paste0(output_dir, "/", out_file),
+        files = dir,
+        compression = c("gzip"),
+        extra_flags = "-X  rmd/exclude_files.txt"
+        )
+```
+TODO
+* develop code HERE
+* when good, put into compress.R
+
+  - dotfiles, Except .Renviron are in git
+  - 
+
+  - Problems:  exclude/include certain files ?
+```{r system_files}
+# full list
+
+the_dirs = list(
+                bin = "~/bin/*.sh",
+                mp3 = "~/Downloads/mp3", # scripts onl
+                #dotfiles = "~/dotfiles/.Renviron",
+                documents = "~/Downloads/documents" # multiple dirs
+
+
+)
+
+```
+
+```{r tessting}
+# pluck 1 dir at a time from the_dirs
+dir = the_dirs[[3]]
+dir
+
+compress_dir(type="system", 
+             dir = dir )
+
+```
+
+```{r}
+# To inspect tar.gz
+# tar doesn't like files in quotes
+tar --list -f <file>
+```
+
+
+
+
+```{r knit_exit()}
+knitr::knit_exit()
+```
+
+***
+
+
+
+
+
+
