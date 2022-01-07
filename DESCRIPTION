@@ -16,7 +16,7 @@ Suggests:
     testthat,
     knitr
 Roxygen: list(markdown = TRUE, load = "installed")
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     rmarkdown,
     lubridate,

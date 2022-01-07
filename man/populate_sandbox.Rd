@@ -4,7 +4,7 @@
 \alias{populate_sandbox}
 \title{populate_sandbox}
 \usage{
-populate_sandbox(tempdir = tempdir, the_files = NULL)
+populate_sandbox(the_dir = NULL, the_files = NULL)
 }
 \description{
 populate_sandbox

@@ -3,39 +3,93 @@
 
 file <- "tt_SANDBOX.R"
 
+##  REF:  dir/file cmds
+{
+    if (F){
+    file.rename()
+    file.create()
+    basename()
+    dirname()
+    list.dirs()
+    dir()
+
+    #list.files(<dir>)
+    }
+}
+
 ##
-load_all()
-
-library(tinytest)
-
+{
+    start_up  <- function(){
+    load_all()
+    library(tinytest)
+    }
+}
+##  Create and then Delete Sandbox
 { ## create tmpdir and empty tempfile
 the_dir  <- create_sandbox()
-the_dir
-path  <- the_dir
 tinytest::expect_true(dir.exists(the_dir))
+
+##  .is_sandbox()
+tinytest::expect_true(.is_sandbox(the_dir))
+the_dir
+
+  ## clean up sandbox
+remove_sandbox(the_dir)
+tinytest::expect_false(dir.exists(the_dir))
 }
 
-{ ## Add a file to sandbox
-the_files = c("_NA_( 123")
-add_files_sandbox(tempdir = the_dir, the_files=the_files)
 
-## Check files, method 1
-dir(the_dir)
+
+##  test with populate_sandbox()
+{ ## create tmpdir and empty tempfile
+    start_up()
+the_dir  <- create_sandbox()
+tinytest::expect_true(dir.exists(the_dir))
+
+##  .is_sandbox()
+tinytest::expect_true(.is_sandbox(the_dir))
+the_dir
+
+##  add files
+    the_files=c("file1", "file2")
+    populate_sandbox(the_dir, the_files)
+    list.files(the_dir)
+  ## clean up sandbox
+remove_sandbox(the_dir)
+tinytest::expect_false(dir.exists(the_dir))
 }
+
 
 { ## check files in sandbox, method 2
   pattern  <- ""
   the_files  <- jimTools::read_file_names(path=the_dir, pattern=pattern)
   the_files
+}
 
+{
+    if (F){
+    file.rename()
+    file.create()
+    basename()
+    dirname()
+    list.dirs()
+    dir()
+
+    #list.files(<dir>)
+    }
 }
 
 { ## populate sandbox with random files
   #  if the_files = NULL, will populate with its own files
-  populate_sandbox(tempdir = the_dir, the_files = NULL) 
-  the_files  <- jimTools::read_file_names(path=the_dir, pattern=pattern)
-  the_files
+  populate_sandbox(the_dir = the_dir, the_files = c("file1", "file2") )
 
+  the_dir  <- create_sandbox()
+  the_files  <- c("file1", "file2")
+  the_files  <- paste0(the_dir, "/",the_files)
+  the_files
+  file.create(the_files)
+
+  list.files(the_dir)
 }
 
 
@@ -43,11 +97,6 @@ dir(the_dir)
 
 }
 
-{  ## clean up sandbox
-remove_sandbox(the_dir)
-dir(the_dir)
-list.files(the_dir)
-}
 
 # =========   rename sandbox file names =======================
 
@@ -233,4 +282,12 @@ sprintf("hello %04f", 23)         # 23.000000
 sprintf("hello %04i", 23)         # int, min of 4 digits
 }
 
+### LEGACY
+###
+{ ## Add a file to sandbox
+the_files = c("_NA_( 123")
+add_files_sandbox(tempdir = the_dir, the_files=the_files)
 
+## Check files, method 1
+dir(the_dir)
+}

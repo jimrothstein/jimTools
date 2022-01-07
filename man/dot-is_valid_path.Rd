@@ -2,12 +2,12 @@
 % Please edit documentation in R/sandbox_files.R
 \name{.is_valid_path}
 \alias{.is_valid_path}
-\title{is_valid_path}
+\title{.is_valid_path}
 \usage{
-.is_valid_path(tempdir)
+.is_valid_path(the_dir = NULL)
 }
 \arguments{
-\item{tempdir}{Directory provided by user.}
+\item{the_dir}{Directory provided by user.}
 }
 \description{
 Logical  Checks if path exists.  HELPER
