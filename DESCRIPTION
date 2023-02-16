@@ -16,10 +16,9 @@ Suggests:
     testthat,
     knitr
 Roxygen: list(markdown = TRUE, load = "installed")
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Imports: 
     rmarkdown,
     lubridate,
-    DT,
     xfun
 VignetteBuilder: knitr
