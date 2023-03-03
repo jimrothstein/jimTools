@@ -8,10 +8,12 @@
 Sys.time()
 {
   begin  <- Sys.time()
-  update.packages(ask = F,
+  update.packages(
+                 ask = F,
                 oldPkgs = old.packages(),
                 checkBuilt=T)
   end  <- Sys.time()
   diff  <- end - begin
   diff
 }
+
