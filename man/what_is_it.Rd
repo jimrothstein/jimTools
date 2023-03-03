@@ -7,6 +7,6 @@
 what_is_it(v)
 }
 \description{
-what_is_it
+Tries to figure out what kind of vector
 }
 \keyword{internal}

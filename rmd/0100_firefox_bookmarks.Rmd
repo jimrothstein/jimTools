@@ -16,6 +16,10 @@ TAGS:  jsonlite, FF bookmarks,
 ---
 Compress and Archive Files on Laptop
 
+TODO
+	-	attr(); unlist(); 
+
+
 ```{r setup, include=FALSE		}
 knitr::opts_chunk$set(echo = TRUE,  
                       comment="      ##",  
@@ -29,24 +33,36 @@ library(magrittr)
 
 #### walk down json
 ```{r}
-b  <- fromJSON("~/Downloads/print_and_delete/bookmarks-2021-11-16.json")
+b  <- fromJSON("~/Downloads/to_Drive/bookmarks-2022-08-24.json")
+
+
 
 str(b, max.level=1, vec.len=5)
 
-str(b$children, max.level=1, vec.len=5)
-str(b$children$children, max.level=1, vec.len=5)
+str(b$children, max.level=1, vec.len=2)
+
+#	has 4 df
+str(b$children$children, max.level=1, vec.len=2)
 
 ## Looks like bookmark folder ... then child with all the bookmarks
 
 ## 1st table (bookmarksmenu?) 17 x 12
 str(b$children$children[[1]], max.level=1, vec.len=5)
+
 df1  <- data.table(b$children$children[[1]])
 df1 |> head()
 
 ## 2nd (toolbar)
 str(b$children$children[[2]], max.level=1, vec.len=5)
+
+str(b$children$children[[2]]$children[[7]]$children[[1]], max.level=1, vec.len=1)
 df2  <- data.table(b$children$children[[2]])
-df2
+df2[, .(title)]
+
+##	multiple levels ! to get to Bayes
+str(b$children$children[[2]]$children[[7]]$children[[1]], max.level=1, vec.len=1)
+
+## next level
 {
 ## grab milf
 df2[title == "mlif"]
@@ -187,6 +203,7 @@ knitr::knit_exit()
 ```
 
 ***
+
 
 
 

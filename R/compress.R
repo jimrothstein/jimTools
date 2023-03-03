@@ -1,18 +1,4 @@
-#' @title compress a dir
-#' 
-#' @description compress_dir()  creates .tar.gz file
-#'    if type is system, zipped file will be placed in toGoogle dir
-#'    if type is project, zipped file will be placed in compressed folder in
-#'    this package.
-#' @param type project, if dir is inside R project; (ie relative dir), OR
-#'              system, if the_dirs is list of complete diretory paths
-#' @param dir directory 
-#' @param prefix of file name
-#' @param out_file  prefix plus this will be name of  compressed file.
-#' @keywords backup compress
-#' @return 
-#' @export
-#'
+#'	@export
 compress_dir  <- function(prefix = NULL, out_file = NULL,
                                       type = c("project", "system"),
                                       dir = NULL)
@@ -33,12 +19,7 @@ compress_dir  <- function(prefix = NULL, out_file = NULL,
 
 }
 
-#' @title get_prefix
-#' 
-#' @description  prepares date-based prefix for final compressed file. 
-#' @keywords backup compress helper
-#' @return 
-#' @export
+#'	@export
 get_prefix  <- function() {
 #  x  <- lubridate::today() # YYYY-MM-DD
   x  <- lubridate::now()
@@ -54,16 +35,7 @@ get_prefix  <- function() {
 					sep="_")
 }
 
-#' @title get_compressed_file_name
-#' 
-#' @description Given a prefix and dir, returns name of compressed file. 
-#'
-#' @param prefix prefix name
-#' @param dir directory 
-#' @keywords backup compress helper
-#' @return 
-#' @export
-#'
+#'	@export
 get_compressed_file_name  <- function(prefix = NULL, 
                                       dir = NULL)
 {
