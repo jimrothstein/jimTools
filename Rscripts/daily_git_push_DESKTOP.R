@@ -1,66 +1,78 @@
+#!/usr/bin/env Rscript
+# 	file <- "daily_git_push_DESKTOP.sh"
+# 	TODO
 
-#
-#		file <- "daily_git.sh"
-#	TODO
+# 		USAGE:		daily_git<CR>
 
-#		USAGE:		daily_git<CR>
-
-##	Sat 13Aug2022
-## #		
+## 	Sat 13Aug2022
 ## 	line="==========================="
 ## 	echo "\n"
 ## 	echo "BEGIN ..." $line
 ## 	echo "--- daily_git.sh --- "
 ## 	echo "directory is .... ${1}"
-## 	echo $(date) 
+## 	echo $(date)
 ## 	echo $line
 
-#	---------------------
-#	FIRST, all the code repos
-#	---------------------
+# 	---------------------
+# 	FIRST, all the code repos
+# 	---------------------
 #
-#system2("git", "add, *", :w
-#)
-cd /home/jim/code/mp3
-/home/jim/bin/git_add_push.sh .
+setwd(".")
+getwd()
+dir <- "/home/jim/code/SHINY/"
 
-cd /home/jim/code/youtube_api
-/home/jim/bin/git_add_push.sh .
+old <- setwd(dir)
+system2("git", args = c("add", "."))
 
-cd /home/jim/code/zsh_project
-/home/jim/bin/git_add_push.sh .
+system2("git", args = c(paste0("commit -m ", "wip")))
+system2("git", args = c("push"))
+setwd(old)
 
-cd /home/jim/code/code_publish
-/home/jim/bin/git_add_push.sh .
+getwd()
 
-cd /home/jim/code/docs
-/home/jim/bin/git_add_push.sh .
+system2("git", args = c("status"))
 
-cd /home/jim/code/try_things_here
-/home/jim/bin/git_add_push.sh .
-
-cd /home/jim/code/nvim_project
-/home/jim/bin/git_add_push.sh .
-
-cd /home/jim/code/lua_project
-/home/jim/bin/git_add_push.sh .
-
-cd /home/jim/code/SHINY
-/home/jim/bin/git_add_push.sh .
-
-# cd /home/jim/code/NSE_project
-# /home/jim/bin/git_add_push.sh .
-
-cd /home/jim/code/health_labs
-/home/jim/bin/git_add_push.sh .
-
-#	---------------------
-#	BEGIN:			non - code REPOS 
-#	---------------------
-cd /home/jim/dotfiles
-/home/jim/bin/git_add_push.sh .
-
-cd /home/jim/bin/
-/home/jim/bin/git_add_push.sh .
-
-cd
+print("stop")
+## cd /home/jim/code/mp3
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/youtube_api
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/zsh_project
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/code_publish
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/docs
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/try_things_here
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/nvim_project
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/lua_project
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/SHINY
+## /home/jim/bin/git_add_push.sh .
+##
+## # cd /home/jim/code/NSE_project
+## # /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/code/health_labs
+## /home/jim/bin/git_add_push.sh .
+##
+## #	---------------------
+## #	BEGIN:			non - code REPOS
+## #	---------------------
+## cd /home/jim/dotfiles
+## /home/jim/bin/git_add_push.sh .
+##
+## cd /home/jim/bin/
+## /home/jim/bin/git_add_push.sh .
+##
+## cd
