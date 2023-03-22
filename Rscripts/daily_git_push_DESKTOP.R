@@ -27,7 +27,6 @@ x <- c(
   "/home/jim/code/nvim_project",
   "/home/jim/code/lua_project",
   "/home/jim/code/SHINY",
-  "/home/jim/code/NSE_project",
   "/home/jim/code/health_labs",
   "/home/jim/code/mp3/",
   "/home/jim/dotfiles"
