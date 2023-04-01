@@ -19,11 +19,12 @@
   pkg <- "code_publish"
   pkg <- "SHINY"
   pkg <- "hello-quarto"
+  pkg <- "try_things_here"
 
 
   user <- "bbarker505/"
-  user <- "jimrothstein/"
   user <- "mine-cetinkaya-rundel/"
+  user <- "jimrothstein/"
 
   system2("gh",
     args = c(
