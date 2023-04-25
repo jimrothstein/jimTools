@@ -13,17 +13,12 @@
 #
 {
   begin <- Sys.time()
-  pkg <- "lua_project"
   pkg <- "docs"
-  pkg <- "tidyverse-Aggregate-Mar2023"
   pkg <- "code_publish"
   pkg <- "SHINY"
-  pkg <- "hello-quarto"
   pkg <- "try_things_here"
+  pkg <- "lua_project"
 
-
-  user <- "bbarker505/"
-  user <- "mine-cetinkaya-rundel/"
   user <- "jimrothstein/"
 
   system2("gh",

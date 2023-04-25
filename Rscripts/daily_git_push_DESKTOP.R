@@ -18,55 +18,58 @@ dir <- "/home/jim/code/jimTools/"
 dir <- "/home/jim/code/try_things_here/"
 
 x <- c(
-  "/home/jim/code/jimTools",
-  "/home/jim/code/youtube_api",
-  "/home/jim/code/zsh_project",
-  "/home/jim/code/code_publish",
-  "/home/jim/code/docs",
-  "/home/jim/code/try_things_here",
-  "/home/jim/code/nvim_project",
-  "/home/jim/code/lua_project",
-  "/home/jim/code/SHINY",
-  "/home/jim/code/health_labs",
-  "/home/jim/code/mp3/",
-  "/home/jim/dotfiles"
+    "/home/jim/code/jimTools",
+    "/home/jim/code/youtube_api",
+    "/home/jim/code/zsh_project",
+    "/home/jim/code/code_publish",
+    "/home/jim/code/docs",
+    "/home/jim/code/try_things_here",
+    "/home/jim/code/nvim_project",
+    "/home/jim/code/lua_project",
+    "/home/jim/code/SHINY",
+    "/home/jim/code/health_labs",
+    "/home/jim/code/mp3/",
+    "/home/jim/dotfiles",
+    "/home/jim/code/code_racket",
+    "/home/jim/code/code_racket",
+    "/home/jim/code/quarto_experiments/"
 )
 
 # 	---------------------
 add_commit_push <- function(dir = NULL) {
-  if (is.null(dir) || is.na(dir) || nchar(dir) == 0) {
-    return(FALSE)
-  }
+    if (is.null(dir) || is.na(dir) || nchar(dir) == 0) {
+        return(FALSE)
+    }
 
-  # stop if any args NOT TRUE
-  if (!dir.exists(dir)) {
-    return(FALSE)
-  }
-  # stop if evaluates to F
-  stopifnot(!is.null(dir) && !is.na(dir) &&
-    !(nchar(dir) == 0) && dir.exists(dir))
-  old <- setwd(dir)
-  system2("git", args = c("add", "."))
+    # stop if any args NOT TRUE
+    if (!dir.exists(dir)) {
+        return(FALSE)
+    }
+    # stop if evaluates to F
+    stopifnot(!is.null(dir) && !is.na(dir) &&
+        !(nchar(dir) == 0) && dir.exists(dir))
+    old <- setwd(dir)
+    system2("git", args = c("add", "."))
 
-  system2("git", args = c(paste0("commit -m ", "wip")))
-  system2("git", args = c("push"))
-  setwd(old)
+    system2("git", args = c(paste0("commit -m ", "wip")))
+    system2("git", args = c("push"))
+    setwd(old)
 
-  if (FALSE) {
-    system2("git", args = c("status"))
-    getwd()
-  }
-  TRUE
+    if (FALSE) {
+        system2("git", args = c("status"))
+        getwd()
+    }
+    TRUE
 }
 
 vapply(x, add_commit_push, FUN.VALUE = FALSE)
 
 if (FALSE) {
-  vapply(x, add_commit_push, FUN.VALUE = FALSE)
-  expect_false(add_commit_push(dir = ""))
-  expect_error(add_commit_push(dir = NULL))
-  expect_error(add_commit_push())
-  expect_true(add_commit_push(dir = dir))
-  expect_true(add_commit_push(dir = x[[1]]))
-  print("stop")
+    vapply(x, add_commit_push, FUN.VALUE = FALSE)
+    expect_false(add_commit_push(dir = ""))
+    expect_error(add_commit_push(dir = NULL))
+    expect_error(add_commit_push())
+    expect_true(add_commit_push(dir = dir))
+    expect_true(add_commit_push(dir = x[[1]]))
+    print("stop")
 }
