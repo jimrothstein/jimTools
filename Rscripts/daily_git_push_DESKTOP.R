@@ -30,8 +30,7 @@ x <- c(
     "/home/jim/code/health_labs",
     "/home/jim/code/mp3/",
     "/home/jim/dotfiles",
-    "/home/jim/code/code_racket",
-    "/home/jim/code/code_racket",
+    # "/home/jim/code/code_racket",
     "/home/jim/code/quarto_experiments/"
 )
 
