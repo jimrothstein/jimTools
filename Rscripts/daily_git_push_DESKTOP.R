@@ -51,8 +51,8 @@ add_commit_push <- function(dir = NULL) {
     old <- setwd(dir)
     invisible(system2("git", args = c("add", ".")))
 
-    system2("git", args = c(paste0("commit -m ", "wip")))
-    system2("git", args = c("push"))
+    invisible(system2("git", args = c(paste0("commit -m ", "wip"))))
+    invisible(system2("git", args = c("push")))
     cat("---------------------------------\n")
     cat("pushed ....", dir, "\n")
     cat("---------------------------------\n")
@@ -65,6 +65,7 @@ add_commit_push <- function(dir = NULL) {
 }
 
 invisible(vapply(x, add_commit_push, FUN.VALUE = FALSE))
+
 if (FALSE) {
     vapply(x, add_commit_push, FUN.VALUE = FALSE)
     expect_false(add_commit_push(dir = ""))
