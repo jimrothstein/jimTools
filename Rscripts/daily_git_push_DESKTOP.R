@@ -12,10 +12,6 @@ library(tinytest)
 # 	FIRST, all the code repos
 # 	---------------------
 #
-# getwd
-dir <- "/home/jim/code/SHINY/"
-dir <- "/home/jim/code/jimTools/"
-dir <- "/home/jim/code/try_things_here/"
 
 x <- c(
     "/home/jim/code/jimTools",
@@ -49,10 +45,10 @@ add_commit_push <- function(dir = NULL) {
     stopifnot(!is.null(dir) && !is.na(dir) &&
         !(nchar(dir) == 0) && dir.exists(dir))
     old <- setwd(dir)
-    invisible(system2("git", args = c("add", ".")))
+    system2("git", args = c("add", "."))
 
-    invisible(system2("git", args = c(paste0("commit -m ", "wip"))))
-    invisible(system2("git", args = c("push")))
+    system2("git", args = c(paste0("commit -m ", "--quiet", "wip")))
+    system2("git", args = c("push", "--quiet"))
     cat("---------------------------------\n")
     cat("pushed ....", dir, "\n")
     cat("---------------------------------\n")
