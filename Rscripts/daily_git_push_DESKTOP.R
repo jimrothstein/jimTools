@@ -21,6 +21,7 @@ x <- c(
     "/home/jim/code/jimTools",
     "/home/jim/code/youtube_api",
     "/home/jim/code/zsh_project",
+    "/home/jim/code/lua_project",
     "/home/jim/code/code_publish",
     "/home/jim/code/docs",
     "/home/jim/code/try_things_here",
@@ -64,7 +65,7 @@ add_commit_push <- function(dir = NULL) {
     TRUE
 }
 
-vapply(x, add_commit_push, FUN.VALUE = FALSE)
+invisible(vapply(x, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {
     vapply(x, add_commit_push, FUN.VALUE = FALSE)
