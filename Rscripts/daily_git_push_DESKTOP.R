@@ -29,6 +29,7 @@ x <- c(
     "/home/jim/code/health_labs",
     "/home/jim/code/mp3/",
     "/home/jim/dotfiles",
+    "/home/jim/.config/nvim/", ## for lazyvim config
     "/home/jim/code/quarto_experiments/"
 )
 
