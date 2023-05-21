@@ -21,6 +21,7 @@ x <- c(
     "/home/jim/code/jimTools",
     "/home/jim/code/zsh_project",
     "/home/jim/code/lua_project",
+    "/home/jim/code/racket_project",
     "/home/jim/code/code_publish",
     "/home/jim/code/docs",
     "/home/jim/code/try_things_here",
