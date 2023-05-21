@@ -7,3 +7,6 @@ Untracked files:
 	git_log.log
 
 nothing added to commit but untracked files present (use "git add" to track)
+[master abe388a] wip
+ 1 file changed, 9 insertions(+)
+ create mode 100644 git_log.log
