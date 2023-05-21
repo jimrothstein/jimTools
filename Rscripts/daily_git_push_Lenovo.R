@@ -50,7 +50,7 @@ add_commit_push <- function(dir = NULL) {
     system2("git", args = c("add", "."))
 
     ## works
-    system2("git", args = c(paste0("commit -m ", "wip", " >>", " git_log.log")))
+    system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
     system2("git", args = c("push", "--quiet"))
     cat("---------------------------------\n")
     cat("pushed ....", dir, "\n")
@@ -72,5 +72,5 @@ if (FALSE) {
     expect_error(add_commit_push())
     expect_true(add_commit_push(dir = dir))
     expect_true(add_commit_push(dir = x[[1]]))
-    print("stop")
 }
+print("stop")

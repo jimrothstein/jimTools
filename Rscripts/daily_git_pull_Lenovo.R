@@ -50,7 +50,7 @@ add_commit_pull <- function(dir = NULL) {
     # system2("git", args = c("add", "."))
 
     ## works
-    # system2("git", args = c(paste0("commit -m ", "wip", " >>", " git_log.log")))
+    # system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
     system2("git", args = c("pull", "-v"))
     cat("---------------------------------\n")
     cat("pulled ....", dir, "\n")
