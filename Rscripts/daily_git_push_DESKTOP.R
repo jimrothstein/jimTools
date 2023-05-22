@@ -14,8 +14,6 @@ library(tinytest)
 #
 
 #     "/home/jim/code/youtube_api",
-# # "/home/jim/code/code_racket",
-#     "/home/jim/code/mp3/",
 x <- c(
     "/home/jim/bin",
     "/home/jim/code/jimTools",

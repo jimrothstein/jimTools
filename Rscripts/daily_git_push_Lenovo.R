@@ -14,14 +14,13 @@ library(tinytest)
 #
 
 #     "/home/jim/code/youtube_api",
-# # "/home/jim/code/code_racket",
-#     "/home/jim/code/mp3/",
 x <- c(
     "/home/jim/bin",
     "/home/jim/code/jimTools",
     "/home/jim/code/zsh_project",
     "/home/jim/code/lua_project",
     "/home/jim/code/code_publish",
+    "/home/jim/code/code_racket",
     "/home/jim/code/docs",
     "/home/jim/code/try_things_here",
     "/home/jim/code/nvim_project",
