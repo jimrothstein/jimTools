@@ -14,14 +14,13 @@ library(tinytest)
 #
 
 #     "/home/jim/code/youtube_api",
-# # "/home/jim/code/code_racket",
-#     "/home/jim/code/mp3/",
 x <- c(
     "/home/jim/bin",
     "/home/jim/code/jimTools",
     "/home/jim/code/zsh_project",
     "/home/jim/code/lua_project",
     "/home/jim/code/code_publish",
+    "/home/jim/code/code_racket",
     "/home/jim/code/docs",
     "/home/jim/code/try_things_here",
     "/home/jim/code/nvim_project",
@@ -50,7 +49,7 @@ add_commit_push <- function(dir = NULL) {
     system2("git", args = c("add", "."))
 
     ## works
-    system2("git", args = c(paste0("commit -m ", "wip", " >>", " git_log.log")))
+    system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
     system2("git", args = c("push", "--quiet"))
     cat("---------------------------------\n")
     cat("pushed ....", dir, "\n")
@@ -72,5 +71,5 @@ if (FALSE) {
     expect_error(add_commit_push())
     expect_true(add_commit_push(dir = dir))
     expect_true(add_commit_push(dir = x[[1]]))
-    print("stop")
 }
+print("stop")

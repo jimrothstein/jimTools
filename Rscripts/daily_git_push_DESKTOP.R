@@ -14,8 +14,6 @@ library(tinytest)
 #
 
 #     "/home/jim/code/youtube_api",
-# # "/home/jim/code/code_racket",
-#     "/home/jim/code/mp3/",
 x <- c(
     "/home/jim/bin",
     "/home/jim/code/jimTools",
@@ -51,7 +49,7 @@ add_commit_push <- function(dir = NULL) {
     system2("git", args = c("add", "."))
 
     ## works
-    system2("git", args = c(paste0("commit -m ", "wip", " >>", " git_log.log")))
+    system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
     system2("git", args = c("push", "--quiet"))
     cat("---------------------------------\n")
     cat("pushed ....", dir, "\n")
