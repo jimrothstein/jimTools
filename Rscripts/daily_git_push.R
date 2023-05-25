@@ -25,6 +25,7 @@ x <- c(
     "/home/jim/code/try_things_here",
     "/home/jim/code/nvim_project",
     "/home/jim/code/SHINY",
+    "/home/jim/code/TAGS",
     "/home/jim/code/health_labs",
     "/home/jim/code/mp3/",
     "/home/jim/dotfiles",
