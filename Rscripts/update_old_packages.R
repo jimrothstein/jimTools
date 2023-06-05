@@ -12,12 +12,22 @@
 ##     -   Installing to ~/R/x86_64-pc-linux-gnu-library/4.x/  works, but not sure how to specifiy
 ##     -   update.packages downloads and installs.   old.packages() only finds.
 
-# ,
+# ------------------------------------------------------------------
+#   2023-06-05
+#   update.packages(oldPkgs=old.packages())
+#
+#   This ONE LINE did work (asked if I wanted to use personal dir)
+# ------------------------------------------------------------------
+#   Also, can do everything through Rstuido.
+# ------------------------------------------------------------------
+#   But, this script did NOT work.  (permissions;  WARNING)
+# ------------------------------------------------------------------
+#
 {
     begin <- Sys.time()
     update.packages(
         lib.loc = .libPaths()[[1]], # ~/R/x86_64-pc-linux-gnu-library/4.x/
-        ask = F,
+        ask = F, # user can select WHICH pkgs
         oldPkgs = old.packages(),
         checkBuilt = T
     )
@@ -25,6 +35,7 @@
     end <- Sys.time()
     diff <- end - begin
     diff
+    # ------------------------------------------------------------------
 }
 
 
