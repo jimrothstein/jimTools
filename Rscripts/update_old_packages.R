@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 #
-# TODO   
+# TODO
 #   1JUNE2023
 #   -    more testing, not convinced this works with  matrix, boot, and others that refused to update easily (permisisons)
 #   -   move Rscripts to dotfiles??
@@ -16,7 +16,7 @@
 {
     begin <- Sys.time()
     update.packages(
-        lib.loc = .libPaths()[[1]]   # ~/R/x86_64-pc-linux-gnu-library/4.x/
+        lib.loc = .libPaths()[[1]], # ~/R/x86_64-pc-linux-gnu-library/4.x/
         ask = F,
         oldPkgs = old.packages(),
         checkBuilt = T
