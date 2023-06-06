@@ -16,21 +16,23 @@ library(tinytest)
 #     "/home/jim/code/youtube_api",
 x <- c(
     "/home/jim/bin",
-    "/home/jim/code/jimTools",
-    "/home/jim/code/zsh_project",
-    "/home/jim/code/lua_project",
     "/home/jim/code/code_publish",
     "/home/jim/code/code_racket",
     "/home/jim/code/docs",
-    "/home/jim/code/try_things_here",
+    "/home/jim/code/jimTools",
+    "/home/jim/code/make_project",
+    "/home/jim/code/lua_project",
     "/home/jim/code/nvim_project",
     "/home/jim/code/SHINY",
     "/home/jim/code/TAGS",
     "/home/jim/code/health_labs",
+    "/home/jim/code/make_project",
     "/home/jim/code/mp3/",
     "/home/jim/dotfiles",
     "/home/jim/.config/nvim/", ## for lazyvim config
-    "/home/jim/code/quarto_experiments/"
+    "/home/jim/code/try_things_here",
+    "/home/jim/code/quarto_experiments/",
+    "/home/jim/code/zsh_project"
 )
 
 # 	---------------------
