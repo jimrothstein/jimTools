@@ -1,9 +1,5 @@
 #!/usr/bin/env Rscript
 #
-# TODO
-#   1JUNE2023
-#   -    more testing, not convinced this works with  matrix, boot, and others that refused to update easily (permisisons)
-#   -   move Rscripts to dotfiles??
 #
 # PURPOSE:   find and upgrade  old R packages
 # USAGE:    ./update_old_packages.R  at COMMAND LIME
@@ -14,7 +10,8 @@
 
 # ------------------------------------------------------------------
 #   2023-06-05
-#   update.packages(oldPkgs=old.packages())
+#   THIS WORKS:   update.packages(oldPkgs=old.packages())
+#   NOT THIS SCRIPT, confused !
 #
 #   This ONE LINE did work (asked if I wanted to use personal dir)
 # ------------------------------------------------------------------
