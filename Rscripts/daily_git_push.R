@@ -24,6 +24,7 @@ x <- c(
     "/home/jim/code/lmlcr",
     "/home/jim/code/lua_project",
     "/home/jim/code/nvim_project",
+    "/home/jim/code/plugins", # my lua plugins
     "/home/jim/code/SHINY",
     "/home/jim/code/TAGS",
     "/home/jim/code/health_labs",

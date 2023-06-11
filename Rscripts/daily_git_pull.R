@@ -23,6 +23,7 @@ x <- c(
     "/home/jim/code/lmlcr",
     "/home/jim/code/lua_project",
     "/home/jim/code/make_project",
+    "/home/jim/code/plugins", # my lua plugins
     "/home/jim/code/nvim_project",
     "/home/jim/code/SHINY",
     "/home/jim/code/TAGS",
