@@ -20,6 +20,7 @@ x <- c(
     "/home/jim/code/code_racket",
     "/home/jim/code/docs",
     "/home/jim/code/jimTools",
+    "/home/jim/code/lmlcr",
     "/home/jim/code/lua_project",
     "/home/jim/code/make_project",
     "/home/jim/code/nvim_project",
