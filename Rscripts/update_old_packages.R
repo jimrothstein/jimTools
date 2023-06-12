@@ -20,6 +20,7 @@
 #   But, this script did NOT work.  (permissions;  WARNING)
 # ------------------------------------------------------------------
 #
+packageVersion(pkg = old.packages(lib.loc = "R_LIBS_USER"))
 {
     begin <- Sys.time()
     update.packages(
