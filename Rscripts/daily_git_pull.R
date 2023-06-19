@@ -55,12 +55,10 @@ add_commit_pull <- function(dir = NULL) {
 
     ## works
     # system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
-    cat("---------------------------------\n")
-    cat("pulling ....", dir, "\n")
-    system2("git", args = c("pull", "-v"))
-    cat("\n")
-    cat("pulled ....", dir, "\n")
     cat("---------------------------------\n\n")
+    cat("PULLING ............................................", dir, "\n")
+    system2("git", args = c("pull", "-v"))
+    cat("pulled ....", dir, "\n")
     setwd(old)
     if (FALSE) {
         system2("git", args = c("status"))
