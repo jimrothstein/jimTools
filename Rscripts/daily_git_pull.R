@@ -1,4 +1,11 @@
 #!/usr/bin/env Rscript
+#
+#  Why works?    Kernel sees shebang
+#  /usr/bin/env  tells kernel where to find ($PATH) program <Rscript>
+#
+#  REF:  <https://stackoverflow.com/questions/21732524/how-to-know-what-script-header-to-use-and-why-it-matters>
+#
+#
 #!/opt/R/4.3.1/bin/Rscript
 #!/opt/R/${R_VERSION}/bin/Rscript
 # 	TODO
