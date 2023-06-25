@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
-# 	file <- "daily_git_pull_Lenovo.R"
+#!/opt/R/4.3.1/bin/Rscript
+#!/opt/R/${R_VERSION}/bin/Rscript
 # 	TODO
 # 	  - add_commit_push  clean up if statements
 # 	  - more tinytest::
