@@ -1,4 +1,4 @@
-#!/opt/R/4.3.1/bin/Rscript
+#!/usr/bin/env Rscript 
 # 	file <- "daily_git_push_Lenovo.R"
 # 	TODO
 # 	  - add_commit_push  clean up if statements
