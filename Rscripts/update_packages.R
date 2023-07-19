@@ -12,8 +12,9 @@ Sys.time()
 
 {
 begin  <- Sys.time()
-    update.packages(ask = FALSE , checkBuild=TRUE)
+    update.packages(ask = FALSE , instLib = .libPaths()[[1]], checkBuild=TRUE)
     end  <- Sys.time()
     diff  <- end - begin
     diff
 }
+
