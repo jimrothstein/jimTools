@@ -6,6 +6,7 @@ x <- c(
   "/home/jim/code/docs",
   "/home/jim/code/jimTools",
   "/home/jim/code/make_project",
+  "/home/jim/code/jimrothstein.github.io",
   "/home/jim/code/lua_project",
   "/home/jim/code/nvim_project",
   # "/home/jim/code/plugins", # my lua plugins
