@@ -1,17 +1,19 @@
 #!/usr/bin/env Rscript
 
-
-
 # PURPOSE:   find and upgrade  R Packages
 # Rscript version of 202_, which should be deleted when this works
 # USAGE:  ./202_
 #
+# TODOP (2023-11-06)
+#   -   add quiet=   to updates
+#   -   add logging? log4j
+#   -   legacy - removed
 # TODO: (2023-11-03)
 #   -   Confirm working Rscript
 #
-#
 # -------------------------------------
-#     200_   orginal R update, simplified
+#   NOTES:
+# 200_   orginal R update, simplified
 # 201_   misc commands to explore packages (clean up!)
 # 202_   fancier R update (working, need to get to tip-top shape)
 # 202_WIP   ... this Rscript
@@ -67,6 +69,7 @@ update.packages(
     libinst = lib1,
     ask = FALSE,
     oldPkgs = as.matrix(cand[LibPath == lib1, ]),
+    quiet = TRUE
 )
 
 
@@ -80,47 +83,8 @@ x
 update.packages(
     instlib = lib1,
     ask = FALSE,
-    oldPkgs = as.matrix(x)
+    oldPkgs = as.matrix(x),
+    quiet = TRUE
 )
 
 cat("done")
-#   LEGACY
-# ------------------------------------------------------------------
-#   17-JULY-2023
-#   with version 4.3.1, directories have changed.  EXcept for WARNINGs about packages no# t updated because of permisisions.  This *should* work.
-#
-#
-#   2023-06-05
-#   THIS WORKS:   update.packages(oldPkgs=old.packages())
-#   NOT THIS SCRIPT, confused !
-#
-#   This ONE LINE did work (asked if I wanted to use personal dir)
-# ------------------------------------------------------------------
-#   Also, can do everything through Rstuido.
-# ------------------------------------------------------------------
-#   But, this script did NOT work.  (permissions;  WARNING)
-# ------------------------------------------------------------------
-#
-# packageVersion(pkg = old.packages(lib.loc = "R_LIBS_USER"))
-# {
-#     begin <- Sys.time()
-#     update.packages(
-#         ask = F,
-#         oldPkgs = old.packages(lib.loc = NULL),
-# lib.loc = .libPaths()[[1]], # ~/R/x86_64-pc-linux-gnu-library/4.x/
-#         lib.loc = NULL, # should search ALL paths
-#         instlib = .libPaths()[[1]],
-#         checkBuilt = T
-#     )
-#
-#     end <- Sys.time()
-#     diff <- end - begin
-#     diff
-#------------------------------------------------------------------
-# }
-#
-# old.packages()
-# old.packages(lib.loc = NULL)
-# old.packages(lib.loc = NULL, checkBuilt = T)
-
-# old.packages(lib.loc = .libPaths()[[1]], checkBuilt = T)
