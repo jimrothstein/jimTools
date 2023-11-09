@@ -87,4 +87,4 @@ update.packages(
     quiet = TRUE
 )
 
-cat("done")
+cat("done\n")
