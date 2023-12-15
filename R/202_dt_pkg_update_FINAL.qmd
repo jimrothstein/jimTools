@@ -1,8 +1,10 @@
 2023-11-03
 
+/home/jim/code/jimTools/R/202_dt_pkg_update_FINAL.qmd
 DEPRECATED
 
-USE 202_WIP_  Rscript
+USE ./202_WIP_Rscript.R  Rscript
+USE  
 # -------------------------------------
 # -------------------------------------
 # -------------------------------------

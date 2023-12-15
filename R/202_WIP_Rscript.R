@@ -4,7 +4,12 @@
 # Rscript version of 202_, which should be deleted when this works
 # USAGE:  ./202_ (run at CLI, as Rscript)
 #
+
 # TODO:
+# 2023-12-13
+#
+#   -   Why not update ALL candidates, install in directory 1? (if any dups, just prune)
+#   -   Suppose pkg X in dir2 (ro); and a newer version is in dir1;  AND  exists an even newer package. What does installed packges report?
 # 2023-11-13
 #   -   continue to verify workinga
 #   -   now logging
@@ -53,6 +58,7 @@ info(logger, "Start ... ")
 info(logger, "Finding ... candidates")
 dt <- as.data.table(installed.packages())
 cand <- as.data.table(old.packages(checkBuilt = T))
+info(logger, paste0("Found ", nrow(cand), "candidates"))
 ### Any candidate in lib1, then update these.
 lib2 <- .libPaths()[[2]]
 lib1 <- .libPaths()[[1]]
