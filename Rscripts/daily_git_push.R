@@ -48,7 +48,10 @@ add_commit_push <- function(dir = NULL) {
   }
   TRUE
 }
-system2("echo", args = c(as.character(Sys.Date()), " >> ", "~/git_log.log"))
+system2("echo", args = c(
+  paste0("today = ", as.character(Sys.Date())),
+  " >> ", "~/git_log.log"
+))
 invisible(vapply(x, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {
