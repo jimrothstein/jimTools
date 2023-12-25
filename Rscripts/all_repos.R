@@ -1,4 +1,5 @@
 #   repos used for daily_git_pull.R and daily_git_push.R
+#   /home/jim/code/jimTools/Rscripts/all_repos.R
 x <- c(
   "/home/jim/bin",
   "/home/jim/code/code_publish",
@@ -21,5 +22,6 @@ x <- c(
   "/home/jim/code/stats_project/",
   "/home/jim/code/try_things_here",
   "/home/jim/code/quarto_experiments/",
+  "/home/jim/code/QUARTO/",
   "/home/jim/code/zsh_project"
 )
