@@ -21,7 +21,7 @@ x <- c(
   "/home/jim/.config/kickstart/", ## for kickstart
   "/home/jim/code/stats_project/",
   "/home/jim/code/try_things_here",
-  "/home/jim/code/quarto_experiments/",
+  #   "/home/jim/code/quarto_experiments/",
   "/home/jim/code/QUARTO/",
   "/home/jim/code/zsh_project"
 )

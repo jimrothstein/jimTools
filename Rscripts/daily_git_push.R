@@ -1,11 +1,15 @@
 #!/usr/bin/env Rscript
-# 	file <- "daily_git_push_Lenovo.R"
+
+# daily_git_push.R
+#
 # 	TODO
 # 	  - add_commit_push  clean up if statements
+#         - ~/git_log.log  ADD dates, more info
 # 	  - more tinytest::
 
-# 		USAGE:		./daily_git_push_Lenovo.R
 
+# PURPOSE:  update all github repos (SEE list: all_repos.R)
+# USAGE:
 
 library(tinytest)
 
@@ -13,9 +17,9 @@ library(tinytest)
 # 	---------------------
 #
 
-#     "/home/jim/code/youtube_api",
 source("~/code/jimTools/Rscripts/all_repos.R")
 # 	---------------------
+# Each dir, this function does actual git work.
 add_commit_push <- function(dir = NULL) {
   if (is.null(dir) || is.na(dir) || nchar(dir) == 0) {
     return(FALSE)
@@ -44,7 +48,7 @@ add_commit_push <- function(dir = NULL) {
   }
   TRUE
 }
-
+system2("echo", args = c(as.character(Sys.Date()), " >> ", "~/git_log.log"))
 invisible(vapply(x, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {
