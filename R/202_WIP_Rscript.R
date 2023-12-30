@@ -1,11 +1,13 @@
 #!/usr/bin/env Rscript
-
-# PURPOSE:   find and upgrade  R Packages
-# Rscript version of 202_, which should be deleted when this works
+#   202_WIP_Rscript.R
+# PURPOSE:   find and upgrade  R Packages, an Rscript file
 # USAGE:  ./202_ (run at CLI, as Rscript)
 #
 
+#
 # TODO:
+#   -   This file (202_WIP_Rscript.R) is now THE code to update R packages
+#   -   Removed 202_dt_pkg_update_FINAL.qmd
 # 2023-12-13
 #
 #   -   Why not update ALL candidates, install in directory 1? (if any dups, just prune)
