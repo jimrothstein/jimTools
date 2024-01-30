@@ -2,14 +2,12 @@
 #   /home/jim/code/jimTools/Rscripts/all_repos.R
 x <- c(
   "/home/jim/bin",
-  "/home/jim/code/code_publish",
   "/home/jim/code/code_racket",
   "/home/jim/code/docs",
   "/home/jim/code/jimTools",
   "/home/jim/code/jimrothstein.github.io",
   "/home/jim/code/lua_project",
   "/home/jim/code/nvim_project",
-  # "/home/jim/code/plugins", # my lua plugins
   "/home/jim/code/SHINY",
   "/home/jim/code/TAGS",
   "/home/jim/code/TIDY_TUESDAY",
@@ -22,5 +20,6 @@ x <- c(
   "/home/jim/code/stats_project/",
   "/home/jim/code/try_things_here",
   "/home/jim/code/QUARTO/",
+  "/home/jim/code/youtube_api/",
   "/home/jim/code/zsh_project"
 )
