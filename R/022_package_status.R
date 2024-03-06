@@ -1,5 +1,4 @@
 # 	022_package_status.R
-
 # 	PURUPOSE:
 # 		Method to find packages needed upgrade.
 # 	TODO:
@@ -7,24 +6,27 @@
 # 	TAGS:  ifelse, `:=`, 14jj
 
 
-library(data.table)
+# library(data.table)
 
-inst <- packageStatus()$inst
-dt <- as.data.table(inst)
-
-
-names(dt)
-dim(dt)
+# inst <- packageStatus()$inst
+# dt <- as.data.table(inst)
 
 
+# names(dt)
+# dim(dt)
 
-dt[Status != "ok", .(Package, Version, Priority, Built, Status)]
+
+
+# dt[Status != "ok", .(Package, Version, Priority, Built, Status)]
 
 ## 	Simply LibPath (opt or user)
-dt[, "path" := ifelse(grepl(x = LibPath, pattern = "opt"), "opt", "user")]
-dt[Status != "ok", .(Package, path, Built, Status)]
+
+# dt[, "path" := ifelse(grepl(x = LibPath, pattern = "opt"), "opt", "user")]
+# dt[Status != "ok", .(Package, path, Built, Status)]
 
 
 ## 	help(":=")  CLARIFIES syntax rules, CHECK IT
-help(":=")
-dt[, "path" := ifelse(2 > 1, "yes", "no")]
+# help(":=")
+# 	need to specify data.table::
+
+# dt[, "path" := ifelse(2 > 1, "yes", "no")]

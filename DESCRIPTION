@@ -13,12 +13,13 @@ Encoding: UTF-8
 LazyData: true
 Suggests: 
     tinytest,
-    testthat,
+    testthat (>= 3.0.0),
     knitr
 Roxygen: list(markdown = TRUE, load = "installed")
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.1
 Imports: 
     rmarkdown,
     lubridate,
     xfun
 VignetteBuilder: knitr
+Config/testthat/edition: 3

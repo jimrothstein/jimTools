@@ -2,7 +2,6 @@
 % Please edit documentation in R/jimTools-package.R
 \docType{package}
 \name{jimTools-package}
-\alias{jimTools}
 \alias{jimTools-package}
 \title{jimTools: Misc Tools I Find Useful}
 \description{

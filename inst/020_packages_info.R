@@ -15,12 +15,8 @@
 #   *  utils::installed.packages
 #
 
-{ ## setup
 
-  load_all()
-}
-
-{ ## ALL this from JennyBC, spartan (prune ...)
+ ## ALL this from JennyBC, spartan (prune ...)
 
   # 01-explore-libraries....R
   # see /rstd.io/forgot  (sends to github page)
@@ -79,5 +75,5 @@
   ## use `fields` argument to installed.packages() to get more info and use it!
   head(installed.packages(fields = c("Package", "Depends"), n = 15))
   ## END of JennyBC
-}
+
 # =================End JennyBC =================================

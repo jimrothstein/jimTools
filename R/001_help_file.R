@@ -11,7 +11,6 @@
 #' ls(asNamespace("jimTools")) - returns chr[] of functions
 #' lsf.str("package:jimTools") - list functions
 #'
-#' @docType package
 #' @name jimTools
 NULL
 #> NULL
