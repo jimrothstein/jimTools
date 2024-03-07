@@ -4,6 +4,21 @@
 #' @param df data.frame
 #' @param var column in data.frame, .data variable
 #' @export
+
+
+filter <- function(df = NULL, col = NULL) {
+  # df <- deparse(substitute(df))
+  browser()
+  a <- deparse(substitute(col))
+  b <- eval(deparse(substitute(col)))
+  list(a, , b)
+  #  df[[col]]
+}
+z <- mtcars
+y <- "hp"
+filter(z, y)
+filter(z, hp)
+
 f1 <- function(df = NULL, var = NULL) {
   stopifnot(!is.null(df))
   return(list(var, names(df)))

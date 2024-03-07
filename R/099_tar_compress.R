@@ -11,6 +11,7 @@ compress_dir <- function(prefix = NULL,
     tar(
       tarfile = here("compressed", out_file),
       files = here(dir),
+      # extra_flags = "-X rmd/exclude_files.txt"   to exclude
       compression = c("gzip")
     )
   } else {
@@ -22,6 +23,7 @@ compress_dir <- function(prefix = NULL,
     )
   }
 }
+
 
 #' 	@export
 get_prefix <- function() {
