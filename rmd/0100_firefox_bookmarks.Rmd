@@ -1,17 +1,3 @@
----
-title: Template for .Rmd
-output: 
-  pdf_document:
-    latex_engine: xelatex
-    toc:  TRUE
-    toc_depth:  1
-fontsize: 12pt
-geometry: margin=0.5in,top=0.25in
-#  md_document:
-#  html_document:
-#    toc: true
-#  	toc_float: true
-#    css: styles.css
 TAGS:  jsonlite, FF bookmarks,
 ---
 Compress and Archive Files on Laptop
@@ -29,6 +15,7 @@ load_all()
 library(jsonlite)
 library(data.table)
 library(magrittr)
+setwd("~/code/jimTools/rmd")
 ```
 
 #### walk down json
