@@ -11,7 +11,7 @@
 # PURPOSE:  update all github repos (SEE list: all_repos.R)
 # USAGE:
 
-library(tinytest)
+#library(tinytest)
 
 # 	FIRST, all the code repos
 # 	---------------------
