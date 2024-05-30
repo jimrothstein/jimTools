@@ -3,6 +3,7 @@
 x <- c(
   "/home/jim/bin",
   "/home/jim/beekeeper",
+  "/home/jim/code/code_publish",
   "/home/jim/code/code_racket",
   "/home/jim/code/docs",
   "/home/jim/code/jimTools",
