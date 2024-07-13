@@ -1,5 +1,8 @@
 #   repos used for daily_git_pull.R and daily_git_push.R
 #   /home/jim/code/jimTools/Rscripts/all_repos.R
+
+#  pharmaverseadam, admiral etc.    DO MANUALLY
+
 x <- c(
   "/home/jim/bin",
   "/home/jim/beekeeper",
@@ -11,6 +14,7 @@ x <- c(
   "/home/jim/code/jimrothstein.github.io",
   "/home/jim/code/httr2_project",
   "/home/jim/code/lua_project",
+  "/home/jim/code/LSR_rbook",
   "/home/jim/code/nectar",
   "/home/jim/code/nvim_project",
   "/home/jim/code/SHINY",
