@@ -17,6 +17,7 @@ x <- c(
   "/home/jim/code/LSR_rbook",
   "/home/jim/code/nectar",
   "/home/jim/code/nvim_project",
+  "/home/jim/code/stats_project",
   "/home/jim/code/SHINY",
   "/home/jim/code/TAGS",
   "/home/jim/code/TIDY_TUESDAY",
