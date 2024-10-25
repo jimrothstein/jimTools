@@ -5,17 +5,18 @@
 #
 #  REF:  <https://stackoverflow.com/questions/21732524/how-to-know-what-script-header-to-use-and-why-it-matters>
 #
-#
+#### check_before_push.R  ------------------------ 
+PURPOSE:   Run several checks on pkg
+
 library(devtools)
 library(styler)
 
 
 check <- function(file) {
   styler::style_file(file) # can also style_pkg()
-  devtools::lint(file)
-  devtools::spellcheck(file)
+  devtools::lint(".") #  lintr::lint_dir lintr::lint_package
+  devtools::spell_check(pkg = ".")
 }
 
 file <- "~/code/jimTools/Rscripts/check_before_push.R"
 check(file)
-
