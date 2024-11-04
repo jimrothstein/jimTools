@@ -23,6 +23,8 @@ https://www.markdownguide.org/basic-syntax/
 
 ##  NEWS.md
 
+### 4NOV 2024
+- add first github action to .github/workflows
 
 ### v 0.0.0.9003
 
