@@ -81,8 +81,8 @@ installed[,"NeedsCompilation" == "yes"]
 }
 
 ## Where are we now?
-  * which dir are used? (for user pkgs, for common pkgs)
-  * status of pkgs in each dir
+#  * which dir are used? (for user pkgs, for common pkgs)
+#  * status of pkgs in each dir
 # packages that can be upgraded
   #
 {
