@@ -6,25 +6,25 @@
 #' @export
 
 
-mtcars[[hp]]    # fails
-mtcars[["hp"]]  # works
+mtcars[[hp]] # fails
+mtcars[["hp"]] # works
 
-s = function(df=NULL, col=NULL){
-  x1 = substitute(col)  # symbol
-  x2 = deparse(substitute(col)) # character
-  list(x1,x2)
-} 
+s <- function(df = NULL, col = NULL) {
+  x1 <- substitute(col) # symbol
+  x2 <- deparse(substitute(col)) # character
+  list(x1, x2)
+}
 
-res = s(mtcars, hp)
-X="hp"
-res = s(mtcars, X)
+res <- s(mtcars, hp)
+X <- "hp"
+res <- s(mtcars, X)
 sapply(res, is.symbol)
 sapply(res, is.character)
 
-identical(mtcars[[res[[1]]]],  mtcars[[res[[2]]]])
+identical(mtcars[[res[[1]]]], mtcars[[res[[2]]]])
 
 ## do not want to quote?  use this
-t = function(df=NULL, col=NULL){
+t <- function(df = NULL, col = NULL) {
   df[[substitute(col)]]
 }
 t(mtcars, hp)
@@ -32,7 +32,7 @@ t(mtcars, hp)
 
 filter <- function(df = NULL, col = NULL) {
   # df <- deparse(substitute(df))
-#  browser()
+  #  browser()
   a <- deparse(substitute(col))
   b <- eval(deparse(substitute(col)))
   list(a, , b)

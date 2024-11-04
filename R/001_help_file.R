@@ -1,8 +1,8 @@
 #' jimTools: A package for odds & ends I have found useful.
 #'
-#' jimTools: Package for functions and info I find useful. 
+#' jimTools: Package for functions and info I find useful.
 #'
-#' 
+#'
 #' @section Foo functions:
 #' The foo functions ...
 #'
@@ -14,4 +14,3 @@
 #' @name jimTools
 NULL
 #> NULL
-

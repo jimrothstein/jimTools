@@ -9,16 +9,16 @@ library(data.table)
 dt <- as.data.table(installed.packages())
 
 ui <- fluidPage(
-                h2("Currently Installed Packagess"),
-                textOutput("dim"),
-                tableOutput("installed")
+  h2("Currently Installed Packagess"),
+  textOutput("dim"),
+  tableOutput("installed")
 )
 # head(dt)[1:3,1:3 ]
 # dim(dt) # [1] 264  16
 
 server <- function(input, output, session) {
-                output$dim <- renderText(dim(dt))
-                output$installed <- renderTable(dt[, .(Package, Version)])
+  output$dim <- renderText(dim(dt))
+  output$installed <- renderTable(dt[, .(Package, Version)])
 }
 
 shinyApp(ui, server)
