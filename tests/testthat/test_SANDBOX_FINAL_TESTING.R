@@ -82,7 +82,7 @@ the_prefix
   list.files(the_dir)
 }
 
-{ ## remove sandbox
+ ## remove sandbox
   remove_sandbox(the_dir)
 
 
