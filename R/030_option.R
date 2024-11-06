@@ -1,11 +1,13 @@
+# nolint start
 #' 	@export
 get_options <- function() {
   t <- tibble::tibble(options = options())
 
-  z <- tibble::tibble(
+z <- tibble::tibble(
     option_name = names(t$options),
     values = t[[1]]
   )
+z
 }
 # ---------------------------------------  options() ---------------------------------------
 # Goal:   fix digits displayed
@@ -44,8 +46,7 @@ getOption("width") # 50
 
 # change it back
 old # 74
-(options(width = 74))
-# (options(width = old))   # why fail?
+(options(width = 74)) # (options(width = old))   # why fail?
 
 
 # ------------------------------------------------------------------------------
@@ -53,3 +54,4 @@ old # 74
 .Options[grep(pattern = "dplyr", names(.Options))]
 options("width") # list
 getOption("width") # atomic
+# nolint end

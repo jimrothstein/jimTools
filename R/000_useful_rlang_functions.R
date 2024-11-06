@@ -1,3 +1,4 @@
+## nolint start:
 ## WHERE(name, env=caller_env()
 ## USAGE:  where("mean")
 ## Find env which has 'name"
@@ -164,4 +165,4 @@ current_env()
 f <- function() {
   info()
 }
-f() #
+f() # nolint end

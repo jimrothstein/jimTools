@@ -1,3 +1,4 @@
+# nolint start
 # 032_pass_df_to_function.R
 #' @title Pass df and variable to function
 
@@ -85,3 +86,4 @@ formals(mean)
 x <- call("mean", "mtcars")
 x[[1]]
 length(x)
+# nolint end

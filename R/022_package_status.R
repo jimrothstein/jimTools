@@ -1,4 +1,5 @@
 # 	022_package_status.R
+# nolint start:
 # 	PURUPOSE:
 # 		Method to find packages needed upgrade.
 # 	TODO:
@@ -30,3 +31,4 @@
 # 	need to specify data.table::
 
 # dt[, "path" := ifelse(2 > 1, "yes", "no")]
+# nolint end
