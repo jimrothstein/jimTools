@@ -3,11 +3,11 @@
 get_options <- function() {
   t <- tibble::tibble(options = options())
 
-z <- tibble::tibble(
+  z <- tibble::tibble(
     option_name = names(t$options),
     values = t[[1]]
   )
-z
+  z
 }
 # ---------------------------------------  options() ---------------------------------------
 # Goal:   fix digits displayed
