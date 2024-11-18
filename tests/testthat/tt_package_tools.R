@@ -1,10 +1,11 @@
-#  PURPOSE:   test create, remove of fake files USING tinytest::
-#  TINYTEST::
+## What is useful?  salvagable?
 
+#  PURPOSE:   create, remove of fake files USING tinytest::
+#  TINYTEST::
+if (F) {
 file <- "../tests/testthat/tt_package_tools.R"
 
 ##
-load_all()
 library(tinytest)
 library(data.table)
 
@@ -101,7 +102,6 @@ summary(x)
 
 ## BEGIN DT:  install.packages (using DT)
 
-```{r installed_use_DT}
 library(microbenchmark)
 
 # 4.5 ms
@@ -140,7 +140,6 @@ dt[, .N, by = .(Built)]
 
 # create subset, needs compilation
 x  <- dt[NeedsCompilation == "yes"]
-```
 
 ### Seems to be repeat of information
 {
@@ -159,7 +158,6 @@ if (F) status$avail    # long list
 ## More advanced package managment:
 
 ## List all packages + description, by library location
-```{r library}
 
 ## list all packages in lib.loc
    obj  <- library()
@@ -173,22 +171,16 @@ if (F) status$avail    # long list
 
 ## packages available
   (.packages(all.available  = TRUE))
-```
 
 ## List Default Packages ?? Explain
-```{r default}
 getOption("defaultPackages")
-```
 
 ## Basic installation
   *  sudo R CMD INSTALL *.tar.gz
-```{r install, eval=F, include=F}
-  install.packages("igraph", verbose=TRUE, dependencies=TRUE)
-```
+  #install.packages("igraph", verbose=TRUE, dependencies=TRUE)
 
 
 ## workhorse
-```{r update, eval=F, include=F}
 {
 begin  <- Sys.time()
 .libPaths()
@@ -198,10 +190,8 @@ end  <- Sys.time()
 diff  <- end - begin
 diff
 }
-```
 
 ## Troubleshoot:  install packages one at a time
-```{r trouble, eval=F, include=F}
 {
 begin  <- Sys.time()
 
@@ -224,32 +214,25 @@ diff
 }
 # print updated summary table
 
-```
 
 ### Pkg Dependencies
-```{r dependencies}
 pkg = "purrr"
 packageDescription(pkg)
 # subset vector
 packageDescription(pkg)[c("Imports", "Suggests")]
-```
 
 
 ## sessioninfo::package_info()
-```{r package_info}
 # For Installed Packages, yields dependencies
   sessioninfo::package_info(pkg="tibble")
 
 ## currently loaded packages
   sessioninfo::package_info()
-```
 
-```{r startup}
 
 # ---- 004 R startup ----
 
 # In this order, R seeks .Rprofile $R_HOME, $HOME, project directory
-?Startup
 R.home() # /usr/lib/R
 site_path = R.home(component = "home") 
 site_path
@@ -260,10 +243,8 @@ fname
 
 file.exists(fname) 
 
-```
 
 ### if pkg is installed, it will have `DESCRIPTION` file
-```{r description}
 # returns char[] , logical for each path
 does_pkg_exist  <- function(path = .libPaths(), pkg = NULL,
                             file_name = "DESCRIPTION")
@@ -275,4 +256,4 @@ pkg = "foolish"
 x  <- does_pkg_exist(pkg = pkg)
 x
 
-```
+}

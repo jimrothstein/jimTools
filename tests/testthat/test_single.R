@@ -1,4 +1,3 @@
-context("test_single.R")
 library(testthat)
 library(jimTools)
 
