@@ -7,6 +7,31 @@
 #' @export
 
 
+# ----   Use exprs, !!   to create calls with ds
+library(dplyr)
+library(rlang)
+
+# write function that does this
+dplyr::select(mtcars, "hp")
+
+f <- function(ds, var) {
+  dplyr::select(ds, !!var)
+}
+
+f(
+  ds = mtcars,
+  var = expr("hp")
+)
+f(
+  ds = mtcars,
+  var = expr("cyl")
+)
+
+# another ds
+band_instruments
+f(ds = band_instruments, var = "name")
+
+# -----
 mtcars[[hp]] # fails
 mtcars[["hp"]] # works
 
