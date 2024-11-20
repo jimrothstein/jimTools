@@ -8,6 +8,7 @@ x <- c(
   "/home/jim/code/code_publish",
   "/home/jim/code/docs",
   "/home/jim/code/elisp_project/",
+  "/home/jim/code/gha/",
   "/home/jim/code/gh_actions_project/",
   "/home/jim/code/jimTools",
   "/home/jim/code/jimrothstein.github.io",
