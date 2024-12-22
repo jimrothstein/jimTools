@@ -18,6 +18,7 @@ x <- c(
   "/home/jim/code/mp3/",
   "/home/jim/dotfiles",
   "/home/jim/code/stats_project/",
+  "/home/jim/code/TEAL/",
   "/home/jim/code/try_things_here",
   "/home/jim/code/QUARTO/",
   "/home/jim/code/youtubeR/",
