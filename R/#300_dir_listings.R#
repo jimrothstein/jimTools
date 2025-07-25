@@ -1,0 +1,9 @@
+## PURPOSE:   list files in given directory
+
+
+dir = "~/code/try_things_here/envir/"
+
+files = list.files(dir)
+utils::capture.output(files, file="dir_listing")
+
+

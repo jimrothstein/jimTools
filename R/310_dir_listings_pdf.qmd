@@ -1,0 +1,13 @@
+---
+title: "Untitled"
+format: pdf
+---
+
+
+```{r}
+dir = "~/code/try_things_here/envir/"
+
+files = list.files(dir)
+files
+```
+

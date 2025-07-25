@@ -12,6 +12,8 @@
 # inst <- packageStatus()$inst
 # dt <- as.data.table(inst)
 
+this is error
+
 
 # names(dt)
 # dim(dt)
