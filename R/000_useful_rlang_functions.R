@@ -4,6 +4,18 @@
 ## Find env which has 'name"
 # ===============================
 #
+#' Find function in environment hierarchy
+#'
+#' @description
+#' A short description...
+#' 
+#' @param name A single string.
+#' @param env An environment. Optional.
+#'
+#' @returns 
+#' An environment. Will error if no such function found.
+#'
+#' @export
 library(rlang)
 where <- function(name, env = caller_env()) { #
   if (!is.character(name)) abort("name must be a string")
