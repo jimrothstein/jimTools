@@ -5,6 +5,7 @@
 # adding it into .gitignore later is NOT enough
 # must do:
 # git rm --cached <file>
+.env
 #
 # .R overhead (in any directory)
 # =============
