@@ -7,7 +7,10 @@ on:
     types: [created]
   workflow_dispatch:
 
-if: |
+
+jobs:
+  opencode:
+    if: |
       github.event_name == 'workflow_dispatch' ||
       (
         github.event.comment != null && 
@@ -19,13 +22,6 @@ if: |
         )
       )
 
-jobs:
-  opencode:
-    if: |
-      contains(github.event.comment.body, ' /oc') ||
-      startsWith(github.event.comment.body, '/oc') ||
-      contains(github.event.comment.body, ' /opencode') ||
-      startsWith(github.event.comment.body, '/opencode')
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -40,6 +36,7 @@ jobs:
 
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
+        # store key in github actions
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         with:
