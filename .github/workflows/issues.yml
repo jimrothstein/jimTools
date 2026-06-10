@@ -25,12 +25,12 @@ jobs:
           echo "## Open Issues Report" > open_issues.md
           echo "Generated on: $(date -u)" >> open_issues.md
           echo "" >> open_issues.md
-          echo "| Issue Number | Title | Assignees | URL |" >> open_issues.md
-          echo "| ------------ | ----- | --------- | --- |" >> open_issues.md
+          echo "| Issue Number | Title | Body  | Assignees | URL |" >> open_issues.md
+          echo "| ------------ | ----- | ----- | --------- | --- |" >> open_issues.md
           
           # Use GitHub CLI to fetch JSON, then jq to parse it into Markdown table rows
           gh issue list --state open --limit 1000 --json number,title,assignees,url \
-            --jq '.[] | "| #\(.number) | \(.title) | \([.assignees[].login] | join(", ") | if . == "" then "_None_" else . end) | [Link](\(.url)) |"' >> open_issues.md
+            --jq '.[] | "| #\(.number) | \(.title) | \(.body) | \([.assignees[].login] | join(", ") | if . == "" then "_None_" else . end) | [Link](\(.url)) |"' >> open_issues.md
 
       - name: Commit and Push Changes
         run: |
