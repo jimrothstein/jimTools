@@ -6,7 +6,6 @@
 # 	  - add_commit_push  clean up if statements
 #         - ~/git_log.log  ADD dates, more info
 
-
 # PURPOSE:  update all github repos (SEE list: all_repos.R)
 # USAGE:
 
@@ -15,9 +14,11 @@
 base_dir <- path.expand("~/code")
 dirs <- list.dirs(base_dir, full.names = TRUE, recursive = FALSE)
 git_dirs <- dirs[dir.exists(file.path(dirs, ".git"))]
+git_dirs
 
-# brittle
-#source("~/code/jimTools/Rscripts/all_repos.R")
+
+#    DIR, to exclude
+git_dirs[git_dirs != "/home/jim/code/throwaway"]
 
 # 	---------------------
 # Each dir, this function does actual git work.
@@ -31,8 +32,9 @@ add_commit_push <- function(dir = NULL) {
     return(FALSE)
   }
   # stop if evaluates to F
-  stopifnot(!is.null(dir) && !is.na(dir) &&
-    !(nchar(dir) == 0) && dir.exists(dir))
+  stopifnot(
+    !is.null(dir) && !is.na(dir) && !(nchar(dir) == 0) && dir.exists(dir)
+  )
   old <- setwd(dir)
   system2("git", args = c("add", "."))
 
@@ -49,10 +51,14 @@ add_commit_push <- function(dir = NULL) {
   }
   TRUE
 }
-system2("echo", args = c(
-  paste0("today = ", as.character(Sys.Date())),
-  " >> ", "~/git_log.log"
-))
+system2(
+  "echo",
+  args = c(
+    paste0("today = ", as.character(Sys.Date())),
+    " >> ",
+    "~/git_log.log"
+  )
+)
 invisible(vapply(git_dirs, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {

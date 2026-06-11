@@ -1,1 +1,0 @@
-/home/jim/dotfiles/all_repos.R
