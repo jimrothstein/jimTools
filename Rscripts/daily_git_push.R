@@ -5,19 +5,20 @@
 # 	TODO
 # 	  - add_commit_push  clean up if statements
 #         - ~/git_log.log  ADD dates, more info
-# 	  - more tinytest::
 
 
 # PURPOSE:  update all github repos (SEE list: all_repos.R)
 # USAGE:
 
-#library(tinytest)
-
-# 	FIRST, all the code repos
+# 	FIRST, get all repos managed by git
 # 	---------------------
-#
+base_dir <- path.expand("~/code")
+dirs <- list.dirs(base_dir, full.names = TRUE, recursive = FALSE)
+git_dirs <- dirs[dir.exists(file.path(dirs, ".git"))]
 
-source("~/code/jimTools/Rscripts/all_repos.R")
+# brittle
+#source("~/code/jimTools/Rscripts/all_repos.R")
+
 # 	---------------------
 # Each dir, this function does actual git work.
 add_commit_push <- function(dir = NULL) {
@@ -52,7 +53,7 @@ system2("echo", args = c(
   paste0("today = ", as.character(Sys.Date())),
   " >> ", "~/git_log.log"
 ))
-invisible(vapply(x, add_commit_push, FUN.VALUE = FALSE))
+invisible(vapply(git_dirs, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {
   vapply(x, add_commit_push, FUN.VALUE = FALSE)
