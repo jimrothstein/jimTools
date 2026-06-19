@@ -34,24 +34,23 @@ add_commit_push <- function(dir = NULL) {
   )
   old <- setwd(dir)
   message(paste("Processing:", dir))
+  system2("echo", args = c(paste0("Processing: ", dir, "--------", " >>", " ~/git_log.log")))
 
   system2("git", args = c("add", "."))
+  system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
 
   #  ====
   #    ❌ ERROR: Push to feature-branch failed!"
 
-  system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
 
   tryCatch(
     {
-      system2("echo", args = c(paste0("begin: ", dir, " >>", " ~/git_log.log")))
-
       system2("git", args = c("push", "--quiet"))
       return(TRUE)
     },
     error = function(e) {
       cat("Error in git push for directory:", dir, "\n")
-      cat("Error message:", e$message, "\n")
+      cat("Error message:", e$message, "\n", "-----------------------------\n")
       return(FALSE)
     }
   )
