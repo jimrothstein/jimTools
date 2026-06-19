@@ -49,7 +49,18 @@ add_commit_push <- function(dir = NULL) {
   ## works
   system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
 
-  system2("git", args = c("push", "--quiet"))
+  tryCatch({
+   system2("git", args = c("push", "--quiet"))
+  }, 
+  error = function(e) {
+    cat("Error in git push for directory:", dir, "\n")
+    cat("Error message:", e$message, "\n")
+
+   
+
+
+  })
+
   cat("---------------------------------\n")
   cat("Start: push ....", dir, "\n")
   cat("---------------------------------\n")
