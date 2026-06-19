@@ -51,7 +51,7 @@ add_commit_push <- function(dir = NULL) {
 
   system2("git", args = c("push", "--quiet"))
   cat("---------------------------------\n")
-  cat("pushed ....", dir, "\n")
+  cat("Start: pushed ....", dir, "\n")
   cat("---------------------------------\n")
 
   setwd(old)
