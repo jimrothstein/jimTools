@@ -9,57 +9,70 @@
 # PURPOSE:  update all github repos (SEE list: all_repos.R)
 # USAGE:
 
-# 	FIRST, get all repos managed by git
+# FIRST, get all repos managed by git
 # 	---------------------
 base_dir <- path.expand("~/code")
 dirs <- list.dirs(base_dir, full.names = TRUE, recursive = FALSE)
 git_dirs <- dirs[dir.exists(file.path(dirs, ".git"))]
 git_dirs
 
-
 #    DIR, to exclude
-git_dirs[git_dirs != "/home/jim/code/throwaway"]
-
+git_dirs = git_dirs[git_dirs != "/home/jim/code/throwaway"]
 # 	---------------------
+
+# catch errors !
 # Each dir, this function does actual git work.
 add_commit_push <- function(dir = NULL) {
-  if (is.null(dir) || is.na(dir) || nchar(dir) == 0) {
-    return(FALSE)
-  }
-
-  # stop if any args NOT TRUE
-  if (!dir.exists(dir)) {
-    return(FALSE)
-  }
   # stop if evaluates to F
   stopifnot(
-    !is.null(dir) && !is.na(dir) && !(nchar(dir) == 0) && dir.exists(dir)
+    !is.na(dir) && dir.exists(dir)
   )
   old <- setwd(dir)
   system2("git", args = c("add", "."))
+  #  ====
+  ##!/bin/bash
+  #
+  #echo "Starting deployment script..."
+  #
+  ## First push
+  #git push origin feature-branch || echo "❌ ERROR: Push to feature-branch failed!"
+  #
+  ## Second push (will run even if the first one failed)
+  #git push production main || echo "❌ ERROR: Push to production failed!"
+  #
+  ## Third push
+  #git push backup main || echo "❌ ERROR: Push to backup failed!"
+  #
+  #echo "Script completed!"
+  #====
 
   ## works
   system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
+
   system2("git", args = c("push", "--quiet"))
   cat("---------------------------------\n")
   cat("pushed ....", dir, "\n")
   cat("---------------------------------\n")
+
   setwd(old)
   if (FALSE) {
     system2("git", args = c("status"))
     getwd()
   }
-  TRUE
 }
+
 system2(
   "echo",
   args = c(
-    paste0("today = ", as.character(Sys.Date())),
+    paste0("Start: today = ", as.character(Sys.Date())),
     " >> ",
     "~/git_log.log"
   )
 )
-invisible(vapply(git_dirs, add_commit_push, FUN.VALUE = FALSE))
+
+
+vapply(git_dirs, add_commit_push, FUN.VALUE = FALSE)
+#invisible(vapply(git_dirs, add_commit_push, FUN.VALUE = FALSE))
 
 if (FALSE) {
   vapply(x, add_commit_push, FUN.VALUE = FALSE)

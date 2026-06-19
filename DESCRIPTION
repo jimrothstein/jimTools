@@ -12,7 +12,6 @@ License: What license it uses
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    tinytest,
     testthat (>= 3.0.0),
     knitr
 Roxygen: list(markdown = TRUE, load = "installed")

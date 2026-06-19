@@ -1,8 +1,5 @@
----version:0.002
----
-  # for code/output
-  thedir
-= "~/code/jimTools/"
+# for code/output
+thedir = "~/code/jimTools/"
 thefile = paste0(thedir, "R/audio_files.RDS")
 
 
@@ -28,19 +25,9 @@ rm(audio_files)
 
 audio_files = readRDS(thefile)
 
-# Try1: add try_one if not already present
-if (!"try_one" %in% colnames(audio_files)) {
-  audio_files = audio_files |>
-    dplyr::mutate(try_one = original)
-
-  saveRDS(audio_files, file = thefile)
-}
-
-# Try2: add try2 with numeric prefix removed
-audio_files = readRDS(thefile)
-audio_files = audio_files |>
-  dplyr::mutate(try2 = stringr::str_remove(original, "^\\d{3,4}_"))
-
-saveRDS(audio_files, file = thefile)
-
 print(audio_files, n = nrow(audio_files))
+
+# remove prefix
+source("R/311_audio_step1.R")
+
+# clean suffix

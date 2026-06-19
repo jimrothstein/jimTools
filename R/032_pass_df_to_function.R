@@ -32,7 +32,8 @@ band_instruments
 f(ds = band_instruments, var = "name")
 
 # -----
-mtcars[[hp]] # fails
+if (FALSE) ( mtcars[[hp]]) # fails
+
 mtcars[["hp"]] # works
 
 s <- function(df = NULL, col = NULL) {
