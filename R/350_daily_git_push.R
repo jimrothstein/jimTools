@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript
+# This is R file,  not Rscript
 
 # daily_git_push.R
 #
@@ -11,18 +11,16 @@
 
 # FIRST, get all repos managed by git
 # 	---------------------
-base_dir <- path.expand("~/code")
-dirs <- list.dirs(base_dir, full.names = TRUE, recursive = FALSE)
-git_dirs <- dirs[dir.exists(file.path(dirs, ".git"))]
-git_dirs
+get_dirs <- function(base_dir) {
+  dirs <- list.dirs(base_dir, full.names = TRUE, recursive = FALSE)
+  git_dirs <- dirs[dir.exists(file.path(dirs, ".git"))]
 
-#    DIR, to exclude
-git_dirs = git_dirs[git_dirs != "/home/jim/code/throwaway"]
-# 	---------------------
+# DIR, to exclude
+  git_dirs = git_dirs[git_dirs != "/home/jim/code/throwaway"]
+}
 
-# catch errors !
-# Each dir, this function does actual git work.
 add_commit_push <- function(dir = NULL) {
+
   # stop if evaluates to F
   stopifnot(
     !is.na(dir) && dir.exists(dir)
@@ -30,36 +28,19 @@ add_commit_push <- function(dir = NULL) {
   old <- setwd(dir)
   system2("git", args = c("add", "."))
   #  ====
-  ##!/bin/bash
-  #
-  #echo "Starting deployment script..."
-  #
-  ## First push
-  #git push origin feature-branch || echo "❌ ERROR: Push to feature-branch failed!"
-  #
-  ## Second push (will run even if the first one failed)
-  #git push production main || echo "❌ ERROR: Push to production failed!"
-  #
-  ## Third push
-  #git push backup main || echo "❌ ERROR: Push to backup failed!"
-  #
-  #echo "Script completed!"
-  #====
+  #    ❌ ERROR: Push to feature-branch failed!"
 
-  ## works
   system2("git", args = c(paste0("commit -m ", "wip", " >>", " ~/git_log.log")))
 
-  tryCatch({
-   system2("git", args = c("push", "--quiet"))
-  }, 
-  error = function(e) {
-    cat("Error in git push for directory:", dir, "\n")
-    cat("Error message:", e$message, "\n")
-
-   
-
-
-  })
+  tryCatch(
+    {
+      system2("git", args = c("push", "--quiet"))
+    },
+    error = function(e) {
+      cat("Error in git push for directory:", dir, "\n")
+      cat("Error message:", e$message, "\n")
+    }
+  )
 
   cat("---------------------------------\n")
   cat("Start: push ....", dir, "\n")
@@ -80,7 +61,6 @@ system2(
     "~/git_log.log"
   )
 )
-
 
 
 lapply(git_dirs, add_commit_push)
