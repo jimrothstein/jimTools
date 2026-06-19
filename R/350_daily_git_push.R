@@ -15,10 +15,12 @@ get_dirs <- function(base_dir) {
   git_dirs = git_dirs[git_dirs != "/home/jim/code/throwaway"]
 }
 
+system2("rm", args = c("~/git_log.log"))
+
 system2(
   "echo",
   args = c(
-    paste0("Start: today = ", as.character(Sys.Date())),
+    paste0("Start: today = ", as.character(Sys.Date()), "----------"),
     " >> ",
     "~/git_log.log"
   )
@@ -51,13 +53,12 @@ add_commit_push <- function(dir = NULL) {
       return(FALSE)
     }
   )
-
-  setwd(old)
 }
 
 
+git_dirs = get_dirs("/home/jim/code")
 
-result = lapply(git_dirs, add_commit_push, FUN.VALUE = TRUE)
+result = vapply(git_dirs, add_commit_push, FUN.VALUE = TRUE)
 
 if (FALSE) {
   vapply(x, add_commit_push, FUN.VALUE = FALSE)
