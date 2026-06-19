@@ -34,7 +34,7 @@ add_commit_push <- function(dir = NULL) {
   )
   old <- setwd(dir)
   message(paste("Processing:", dir))
-  
+
   system2("git", args = c("add", "."))
 
   #  ====
@@ -44,6 +44,8 @@ add_commit_push <- function(dir = NULL) {
 
   tryCatch(
     {
+      system2("echo", args = c(paste0("begin: ", dir, " >>", " ~/git_log.log")))
+
       system2("git", args = c("push", "--quiet"))
       return(TRUE)
     },
