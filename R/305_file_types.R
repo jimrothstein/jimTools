@@ -1,4 +1,9 @@
+#  305_file_types.R
+#  Build by LLM Gemini
 #
+#  PURPOSE:  Count file types (md, txt, R, JSON, etc) in a directory
+#  USAGE:  get_file_counts("path/to/directory")
+
 get_file_counts <- function(dir_path) {
   if (!fs::dir_exists(dir_path)) {
     stop("Directory does not exist.")
