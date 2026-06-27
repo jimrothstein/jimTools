@@ -3,7 +3,5 @@ if (!"Step1" %in% colnames(audio_files)) {
   audio_files = audio_files |>
     dplyr::mutate(step1 = original)
 
-  saveRDS(audio_files, file = thefile)
+  saveRDS(audio_files, paste0(RDS_dir, thefile)) 
 }
-
-p
