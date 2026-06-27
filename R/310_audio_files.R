@@ -1,6 +1,3 @@
-# for code input
-thedir <- "~/code/jimTools/R/"
-
 # for data output
 RDS_dir <- "~/code/jimTools/data/output/"
 theDate <- toupper(format(Sys.Date(), "%d%b%Y"))
@@ -23,12 +20,6 @@ files <- list.files(dir)
 audio_files <- tibble::tibble(
   original = files
 )
-
-# object, path
-saveRDS(audio_files, paste0(RDS_dir, thefile))
-rm(audio_files)
-
-audio_files <- readRDS(paste0(RDS_dir, thefile))
 
 print(audio_files, n = nrow(audio_files))
 
