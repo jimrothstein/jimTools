@@ -12,7 +12,7 @@ stopifnot("Directory not found" = dir.exists(dir))
 pkgs <- c("tibble", "dplyr", "stringr")
 new_pkgs <- pkgs[!pkgs %in% installed.packages()[, "Package"]]
 if (length(new_pkgs)) {
-  install.packages(new_pkgs)
+  install.packages(new_pkgs, repos = "https://cran.r-project.org")
 }
 
 files <- list.files(dir)
@@ -26,4 +26,6 @@ print(audio_files, n = nrow(audio_files))
 # remove prefix -----
 source("R/311_audio_step1.R")
 source("R/312_audio_step2.R")
+
+saveRDS(audio_files, paste0(RDS_dir, thefile))
 
