@@ -21,7 +21,7 @@ audio_files <- tibble::tibble(
   original = files
 )
 
-print(audio_files, n = nrow(audio_files))
+dplyr::glimpse(audio_files)
 
 # remove prefix -----
 source("R/311_audio_step1.R")
