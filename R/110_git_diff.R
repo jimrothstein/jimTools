@@ -1,0 +1,9 @@
+#' @export
+
+
+# Which files changed?
+# BE SURE to finish commit (no need to push)
+
+system("git diff HEAD~ HEAD --name-only > changed")
+
+readLines("changed")

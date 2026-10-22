@@ -1,0 +1,30 @@
+---
+title: "github_manager"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+Appears to be working, but some trouble with number of issues, limits etc.
+Results not stored and throws error. 
+REF:  https://emilyriederer.github.io/projmgr/index.html
+```{r}
+library(projmgr)
+id = create_repo_ref("pharmaverse", "admiral", identifier = "admiral_id")
+id
+
+check_credentials(id)
+
+# opens in browser
+browse_repo(id)
+
+browse_issues(id)
+
+issues <- get_issues(id, state="all") %>% parse_issues()
+issues
+
+comments <- get_issue_comments(id, number = 2596) %>% parse_issue_comments()
+comments
+
+```
+

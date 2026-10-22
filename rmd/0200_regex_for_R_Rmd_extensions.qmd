@@ -1,0 +1,24 @@
+---
+TAGS:   regex
+---
+
+TODO:
+2023-05-21
+-   for tools: find, rename, move  and especially RENUMBER all *R files
+
+PURPOSE:    regex patterns to find all *.R, *.Rmd, *.qmd files
+
+    {
+    begin  <- Sys.time()
+
+    md_pattern  <- '[.][Rr]?(md|markdown)$'
+    rmd_pattern  <- '[.][Rr](md|markdown)$'
+
+    files  <- get_RMD_files(path = dir, pattern = rmd_pattern)
+    head(files)
+
+
+
+    end  <- Sys.time()
+    print(end - begin)
+    }

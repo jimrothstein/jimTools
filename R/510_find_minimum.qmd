@@ -1,0 +1,52 @@
+# 510 Find Minimum via Gradient Descent
+
+```{r setup}
+library(tidyverse)
+```
+
+## Purpose
+
+Find the minimum of `f(x) = 6 * (x - 2)^2` using gradient descent with a
+numerical gradient (central differences, step `h`) and an adaptive learning
+rate `ada`. Build the iteration history as a tibble, row by row.
+
+```{r}
+f <- function(x) 6 * (x - 2)^2
+
+h   <- .001
+ada <- 0.01 
+
+set.seed(42)
+x0 <- runif(1, -5, 5)
+n  <- 5000
+
+x <- x0
+tbl <- tibble(N = integer(), x = double(), fx = double(),
+              grad = double(), step_size = double())
+
+for (i in 1:n) {
+  grad <- (f(x + h) - f(x - h)) / (2 * h)
+  step_size <- ada * grad
+  x_new <- x - step_size
+
+  tbl <- tbl %>%
+    add_row(N = i, x = x, fx = f(x), grad = grad, step_size = step_size)
+
+  x <- x_new
+
+  if (abs(step_size) < 1e-6) break
+}
+```
+
+## Result
+
+```{r}
+tbl
+
+cat("final x =", x, " f(x) =", f(x), " after", nrow(tbl), "iterations\n")
+
+tbl %>%
+  ggplot(aes(x, fx)) +
+  geom_line() +
+  labs(title = "Gradient descent toward minimum of 6*(x-2)^2")
+```
